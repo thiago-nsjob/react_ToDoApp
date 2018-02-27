@@ -1,0 +1,19 @@
+
+.app-bayContainer-bayList{
+    display:flex;
+    flex-direction: row;
+  }
+  
+.app-bay-hiddentrue{
+    display:none;
+  }
+
+.app-bayContainer-button-newBay{
+    margin:1em;
+  }
+  .app-bayContainer-button-newBay button{
+      background-color: rgb(0, 188, 212) !important ; 
+  }
+  .app-bayContainer-button-newBay span{
+    color:white !important;
+  }

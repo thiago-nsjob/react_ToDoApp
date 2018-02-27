@@ -1,0 +1,19 @@
+
+.app-bayContainer-bay{
+    flex: 1 1 auto;
+    height: 50em;
+    width: 30em;
+    margin: 1em;
+}
+
+.app-bayContainer-bay-bayTitle{
+    position: relative;
+    top:1em;
+    text-align: center;
+    font-size: 2vw;
+}
+
+.app-bayContainer-bay-hiddentrue{
+    display: none !important;
+}
+ 
