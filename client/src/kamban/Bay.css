@@ -1,14 +1,21 @@
 
 .app-bayContainer-bay{
-    flex: 1 1 auto;
-    height: 50em;
-    width: 30em;
+    height: 60em;
+    width: 40em;
     margin: 1em;
 }
 
-.app-bayContainer-bay-bayTitle{
+.app-bayContainer-bay-postits{
+    display:flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+}
+    
+
+
+div.app-bayContainer-bay-bayTitle{
     position: relative;
-    top:1em;
     text-align: center;
     font-size: 2vw;
 }

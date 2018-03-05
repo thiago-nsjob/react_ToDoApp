@@ -1,0 +1,15 @@
+
+div.postit {
+    flex: 1 1 auto;
+    max-width: 9em !important;
+    max-height: 12em !important;
+    margin:0.5em;
+}
+
+img.postit {
+    position: relative;
+    width: 100%; 
+    height: auto; 
+    align-content: center;
+
+}

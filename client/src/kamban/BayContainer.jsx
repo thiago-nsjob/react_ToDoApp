@@ -1,7 +1,6 @@
 
 import React, { Component } from 'react';
 import {RaisedButton,Dialog,TextField,FlatButton} from 'material-ui';
-
 import Bay from './Bay';
 import './BayContainer.css';
 
@@ -89,7 +88,14 @@ class BayContainer extends Component{
                 />
                 <div class={this.props.className +"-bayList"}>
                 
-                   {this.state.lstBay.map((bay,index) =>  <Bay bayId ={bay.bayId} bayTitle={bay.bayTitle} className={ this.props.className + "-bay"} deletebay={this.handleDeleteBay}/>)}   
+                   {this.state.lstBay.map((bay,index) =>  
+                   <Bay 
+                    key={bay.bayId} 
+                    bayId ={bay.bayId} 
+                    bayTitle={bay.bayTitle} 
+                    className={ this.props.className + "-bay"} 
+                    deletebay={this.handleDeleteBay}>
+                   </Bay>)}   
                    
                     <Dialog     title={"Add new Bay"}
                                 modal="true"

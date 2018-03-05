@@ -24,9 +24,7 @@ class App extends Component {
     }
 
     handleShowSnack(message){
-  
         this.setSnackMessage(message);
-
         this.setState((prevState,index) =>({
                   showSnack:true,
             })
