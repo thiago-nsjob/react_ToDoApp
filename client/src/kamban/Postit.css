@@ -1,15 +1,70 @@
-
-div.postit {
+/*postit main body*/
+div.app-bayContainer-bay-postit     {
     flex: 1 1 auto;
-    max-width: 9em !important;
-    max-height: 12em !important;
+    max-width: 12em !important;
+    height: 9em !important;
     margin:0.5em;
+    background-color: dodgerblue!important;
+    border-color: green!important;
+    border: 2px!important;
 }
 
-img.postit {
-    position: relative;
-    width: 100%; 
-    height: auto; 
-    align-content: center;
+/*postit header*/
+div.app-bayContainer-bay-postitheader {
+    padding: 0.2em !important; 
+    height: 9em!important;
+}
+div.app-bayContainer-bay-postitheader div{
+    padding-right: 10% !important;
+}
+div.app-bayContainer-bay-postitheader div span:first-of-type{
+    margin: 0.5em !important;
+    height: 3em!important;
+}
+div.app-bayContainer-bay-postitheader div span:last-of-type{
+    margin: 0.5em !important;
+    height: 5em!important;
+    word-break: break-all!important;
+}
+div.app-bayContainer-bay-postitheader button{
+    width:32px!important;
+   }
+/*postit header*/
 
+
+/*postit buttons*/
+.app-bayContainer-bay-postitedit{
+    min-width: 1em!important;
+    min-height: 1em!important;
+    width:2em!important;
+    height:2em!important;
+    background-color: royalblue !important;
+
+}
+.app-bayContainer-bay-postitedit svg{
+    width: 100%!important;
+}
+.app-bayContainer-bay-postitdelete{
+    min-width: 1em!important;
+    min-height: 1em!important;
+    width:2em!important;
+    height:2em!important;
+    border-radius: 4px !important;
+}
+
+.app-bayContainer-bay-postitdelete svg{
+    width: 100%!important;
+}
+/*postit buttons*/
+
+
+.app-bayContainer-bay-textfield::-webkit-scrollbar{
+    display: none;
+}
+
+.showoptions-true{
+    display: inherit !important;
+}
+.showoptions-false{
+    display: none !important ;
 }

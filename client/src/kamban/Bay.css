@@ -13,6 +13,12 @@
 }
     
 
+.app-bayContainer-bay-addpostit{
+    margin-left:50%;
+    right: -30% !important;
+ 
+}
+
 
 div.app-bayContainer-bay-bayTitle{
     position: relative;

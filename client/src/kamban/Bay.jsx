@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import {Paper,SvgIcon,FlatButton,TextField,Dialog,Divider} from 'material-ui';
+import {Paper,SvgIcon,FlatButton,TextField,Dialog,Divider,FloatingActionButton} from 'material-ui';
+import ContentAdd from 'material-ui/svg-icons/content/add';
 import Title from './Title';
 import Postit from './Postit';
 
@@ -12,9 +13,7 @@ class Bay extends Component{
         super(props);
 
         //TODO:Remove after api implementation
-        let lst =[{title:"teste1",content:"content 1",hasBlockingIssue:false},
-        {title:"teste2",content:"content 2",hasBlockingIssue:false},
-        {title:"teste3",content:"content 3",hasBlockingIssue:false}]
+        
 
 
         this.state={
@@ -22,16 +21,20 @@ class Bay extends Component{
             isTitleHidden:false,
             isEditTitleHidden:true,
             showDeleteDialog:false,
-            lstPostit:lst,
+            lstPostit:[],
             postitToDelete:""
         }
 
             this.handleChildPostitDragStart = this.handleChildPostitDragStart.bind(this);
+            this.handleDeletePostit= this.handleDeletePostit.bind(this);
    }
 
+   getJsonData(){
+
+    }
     getNewID() {
-    return (((1+Math.random())*0x10000)|0).toString(16).substring(1); 
-}
+        return (((1+Math.random())*0x10000)|0).toString(16).substring(1); 
+    }   
 
     //EditTitleEvents
     handleEditTitleClick(e){
@@ -100,7 +103,6 @@ class Bay extends Component{
             }))
         
     }
-
     handleDragEnd(e){
 
             let newArr = this.state.lstPostit.slice(0);
@@ -111,14 +113,34 @@ class Bay extends Component{
             }))
     
     }
-
     handleChildPostitDragStart(e){
         this.setState({
             postitToDelete:e
         });
     }
 
- //DragEvents    
+ //DragEvents  
+ handleDeletePostit(e){
+    this.setState({
+        postitToDelete:e
+    });
+
+    //although its not meaningfull, its better for the sake of non repeating code 
+    this.handleDragEnd(e);
+
+}
+
+    handleAddPostIt(e){        
+        let newArr = this.state.lstPostit.slice(0);
+        
+        newArr.push({title:"newPostit",content:"----",hasBlockingIssue:false});
+
+        this.setState((prevState,props) =>({
+            lstPostit: newArr
+        }))
+    }
+
+
 
     render(){
 
@@ -174,6 +196,13 @@ class Bay extends Component{
                 onClick={(e)=>this.handleDeleteBay(e)}
                 className={this.props.className + "-FlatButton " }
             /> 
+            <FloatingActionButton
+                 mini={true} 
+                 onClick={(e)=>this.handleAddPostIt(e)}
+                 className={this.props.className + "-addpostit " }
+            >
+            <ContentAdd />
+            </FloatingActionButton>
             <Dialog
                     title={"Bay deletion!"}
                     modal="true"
@@ -186,12 +215,14 @@ class Bay extends Component{
             <div class={this.props.className + "-postits"}>
               {this.state.lstPostit.map((postit,index) =>        
                     <Postit id={this.getNewID()} 
+                            className={this.props.className}
                             title={postit.title} 
                             content={postit.content} 
                             hasBlockingIssue={postit.hasBlockingIssue} 
                             position={index} 
                             sourcebay={this.props.bayId} 
-                            setLeavingPostit={this.handleChildPostitDragStart} />
+                            setLeavingPostit={this.handleChildPostitDragStart}
+                            deletePostit={this.handleDeletePostit} />
               )}
               </div>
             </Paper>
