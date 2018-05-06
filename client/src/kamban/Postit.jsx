@@ -66,8 +66,7 @@ handleShowoptions(){
             
                     <CardHeader
                         title="Teste de paciencia"
-                        subtitle="Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                        Donec mattis pretium massa.asdfçasldifjaosidfjpaosidjfpa"
+                        subtitle="derryl is a bitch"
                         className={this.props.className +"-postitheader"}
                         actAsExpander={true}
                         showExpandableButton={true}

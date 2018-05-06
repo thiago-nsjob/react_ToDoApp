@@ -1,12 +1,13 @@
 /*postit main body*/
-div.app-bayContainer-bay-postit     {
+div.app-bayContainer-bay-postitcontent     {
+    
     flex: 1 1 auto;
     max-width: 12em !important;
-    height: 9em !important;
     margin:0.5em;
     background-color: dodgerblue!important;
     border-color: green!important;
     border: 2px!important;
+    
 }
 
 /*postit header*/
