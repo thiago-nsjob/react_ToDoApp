@@ -5,14 +5,8 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
-const HtmlWebpackPluginConfig = new HtmlWebpackPlugin();
-const config = {
-    plugins: [
-      new CopyWebpackPlugin([
-          { from: 'src/index.html', to: 'dest', toType: 'file',force:true,debug:'debug'},
-          { from: 'src/img', to: 'dest', toType: 'dir',force:true,debug:'debug'}])
-    ]
-  }
+
+
 module.exports = {
   entry: './src/index.js',
   output: {
@@ -20,9 +14,14 @@ module.exports = {
     filename: 'bundle.js'
   },
   plugins: [
+         /* template of the entry html page*/
          new HtmlWebpackPlugin({
           template:'./src/index.html'
-        })
+        }),
+        /*copy all the static files*/
+        new CopyWebpackPlugin([
+          { from: 'src/static', to: 'static', toType: 'dir',force:true,debug:'debug'}
+        ])
       ],
   devServer: {
     contentBase: "./dist",
@@ -41,11 +40,25 @@ module.exports = {
         test: /\.js$/,
         exclude: /node_modules/,
         use: "babel-loader"
-      }, {
+      }, 
+      {
         test: /\.jsx?$/,
         exclude: /node_modules/,
         use: "babel-loader"
-      }
+      },
+      {
+      test: /\.(png|jp(e*)g|svg)$/,  
+      use: [{
+          loader: 'file-loader',
+          options: { 
+              limit: 8000, // Convert images < 8kb to base64 strings
+              name: 'static/[hash]-[name].[ext]'
+          } 
+      }]
+    }
     ]
-  }
+  },
+  resolve: {
+    extensions: ['*', '.js', '.jsx']
+  },
 }
