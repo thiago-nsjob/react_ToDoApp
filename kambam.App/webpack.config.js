@@ -8,7 +8,9 @@ const CopyWebpackPlugin = require('copy-webpack-plugin');
 const HtmlWebpackPluginConfig = new HtmlWebpackPlugin();
 const config = {
     plugins: [
-      new CopyWebpackPlugin([{ from: 'src/index.html', to: 'dest', toType: 'file'}])
+      new CopyWebpackPlugin([
+          { from: 'src/index.html', to: 'dest', toType: 'file',force:true,debug:'debug'},
+          { from: 'src/img', to: 'dest', toType: 'dir',force:true,debug:'debug'}])
     ]
   }
 module.exports = {
