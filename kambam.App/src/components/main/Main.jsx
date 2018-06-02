@@ -1,8 +1,8 @@
 
 
 import React, { Component } from 'react';
-import {AppBar,FlatButton,IconButton,Snackbar} from 'material-ui';
-import NavigationClose from 'material-ui/svg-icons/navigation/close';
+import {AppBar,FlatButton,IconButton,Snackbar} from '@material-ui/core';
+import NavigationClose from '@material-ui/icons/Close';
 import './Main.css';
 
 import BayContainer from '../bay/BayContainer';

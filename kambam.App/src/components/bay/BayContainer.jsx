@@ -1,6 +1,6 @@
 
 import React, { Component } from 'react';
-import {RaisedButton,Dialog,TextField,FlatButton} from 'material-ui';
+import {RaisedButton,Dialog,TextField,FlatButton} from '@material-ui/core';
 import Bay from './Bay';
 import './BayContainer.css';
 

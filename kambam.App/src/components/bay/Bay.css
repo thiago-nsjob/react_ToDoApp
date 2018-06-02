@@ -1,8 +1,8 @@
 
 .app-bayContainer-bay{
-    height: 60em;
-    width: 40em;
-    margin: 1em;
+    height: 100%;
+    margin: 0.5em;
+    max-width: 30%;
 }
 
 .app-bayContainer-bay-postits{
@@ -14,16 +14,22 @@
     
 
 .app-bayContainer-bay-addpostit{
-    margin-left:50%;
-    right: -30% !important;
+    margin: 0.5em!important;
+}
  
+.app-bayContainer-bay-deletepostit{
+    margin: 0.5em!important;
 }
 
+.app-bayContainer-bay-editpostit{
+    margin: 0.5em!important;
+}
 
 div.app-bayContainer-bay-bayTitle{
     position: relative;
-    text-align: center;
+    text-align: left;
     font-size: 2vw;
+    margin: 0.25em;
 }
 
 .app-bayContainer-bay-hiddentrue{

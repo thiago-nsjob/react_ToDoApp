@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
-import {Paper,FlatButton,RaisedButton ,SvgIcon,TextField} from 'material-ui';
-import {Card,CardText,CardActions,CardHeader} from 'material-ui';
-import {darkBlack} from 'material-ui/styles/colors';
+import {Paper,FlatButton,RaisedButton ,SvgIcon,TextField} from '@material-ui/core';
+import {Card,CardText,CardActions,CardHeader} from '@material-ui/core';
+import {darkBlack} from '@material-ui/core/colors';
 import "./Postit.css";
 import postit from "./img/postit.svg"
 
