@@ -1,2 +1,19 @@
 
 
+.main-menu-root{
+    display: flex;
+    flex-grow: 1;
+}
+
+.menu-root-close{
+    justify-content: flex-start;
+}
+.menu-root-title{
+    flex: 1;
+}
+
+.main-menu-save{
+    
+    background-color: cadetblue !important;
+    
+}

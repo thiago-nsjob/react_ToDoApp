@@ -4,9 +4,12 @@ div.app-bayContainer-bay-postitcontent     {
     max-width:16pc!important;
     
     margin:0.5em;
-    background-color: dodgerblue!important;
+    background-color:bisque;
     border-color: green!important;
     border: 2px!important; 
+}
+.app-bayContainer-bay-postittitle {
+    display: inline !important;
 }
 
 /*postit header*/
@@ -33,28 +36,19 @@ div.app-bayContainer-bay-postitheader button{
 
 
 /*postit buttons*/
-.app-bayContainer-bay-postitedit{
+.app-bayContainer-bay-postitedit,.app-bayContainer-bay-postitdelete{
+    
     min-width: 1em!important;
     min-height: 1em!important;
-    width:2em!important;
-    height:2em!important;
-    background-color: royalblue !important;
-
-}
-.app-bayContainer-bay-postitedit svg{
-    width: 100%!important;
-}
-.app-bayContainer-bay-postitdelete{
-    min-width: 1em!important;
-    min-height: 1em!important;
-    width:2em!important;
-    height:2em!important;
+    max-width:1.5em!important;
+    max-height:1.5em!important;
     border-radius: 4px !important;
 }
-
-.app-bayContainer-bay-postitdelete svg{
+.app-bayContainer-bay-postitedit,.app-bayContainer-bay-postitdelete svg{
     width: 100%!important;
 }
+
+
 /*postit buttons*/
 
 

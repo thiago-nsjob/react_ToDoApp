@@ -1,8 +1,13 @@
 
-
 import React, { Component } from 'react';
-import {AppBar,FlatButton,IconButton,Snackbar} from '@material-ui/core';
-import NavigationClose from '@material-ui/icons/Close';
+import AppBar from '@material-ui/core/AppBar';
+import Toolbar from '@material-ui/core/Toolbar';
+import Typography from '@material-ui/core/Typography';
+import Button from '@material-ui/core/Button';
+import IconButton from '@material-ui/core/IconButton';
+import Close from '@material-ui/icons/Close';
+import Snackbar from '@material-ui/core/Snackbar';
+
 import './Main.css';
 
 import BayContainer from '../bay/BayContainer';
@@ -50,31 +55,37 @@ class Main extends Component {
     //Add bay events
 
     render() {
-          const lstBay =  [{bayId:"bay1",bayTitle:"To Do"},
-          {bayId:"bay2",bayTitle:"Doing"},
-          {bayId:"bay3",bayTitle:"Done"}]
+
+        //MOC:some default bays to start with
+          const lstBay =  [{bayId:"bay1",bayTitle:"To Do"},{bayId:"bay2",bayTitle:"Doing"},{bayId:"bay3",bayTitle:"Done"}
+        ]
 
         return ( 
-            <div>
-            <AppBar
-                title={this.props.projectTitle}
-                className="app-bar"
-                iconElementLeft={<IconButton><NavigationClose /></IconButton>}
-                iconElementRight={<FlatButton 
-                                    label="Save" 
-                                    onClick={(e)=>this.handleSaveProject(e)}
-                                    />}
-            />
+            <div classename="main-menu-root">
+    
+            <AppBar position="static" className="teste">
+                <Toolbar>
+                <IconButton className="menu-root-title" color="inherit" aria-label="Menu">
+                    <Close />
+                </IconButton>
+                <Typography variant="title" color="inherit" className="menu-root-title">
+                    {this.props.projectTitle}
+                </Typography>
+                <Button className="main-menu-save"
+                    onClick={(e)=>this.handleSaveProject(e)}>
+                    Save</Button>
+                </Toolbar>
+            </AppBar>
             
-            <BayContainer 
-                className={this.props.className + "-bayContainer"}
-                bayList={lstBay}
+            <BayContainer
+                className ="app-bayContainer" bayList={lstBay}
             />
+           
             <Snackbar
                 open={this.state.showSnack}
                 message={this.state.snackMessage}
                 autoHideDuration={4000}
-                onRequestClose={(e)=>this.handleCloseSnack(e)}
+                onClose={(e)=>this.handleCloseSnack(e)}
                 />
             </div>
         );

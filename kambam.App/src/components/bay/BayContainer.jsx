@@ -1,6 +1,12 @@
 
 import React, { Component } from 'react';
-import {RaisedButton,Dialog,TextField,FlatButton} from '@material-ui/core';
+import Dialog from '@material-ui/core/Dialog';
+import TextField from '@material-ui/core/TextField';
+import Button from '@material-ui/core/Button';
+import DialogTitle from '@material-ui/core/DialogTitle';
+import DialogActions from '@material-ui/core/DialogActions';
+import DialogContent from '@material-ui/core/DialogContent';
+import DialogContentText from '@material-ui/core/DialogContentText';
 import Bay from './Bay';
 import './BayContainer.css';
 
@@ -16,7 +22,7 @@ class BayContainer extends Component{
         }
     }
 
-//TODO: Add delete on server, and call render again
+    //TODO: Add delete on server, and call render again
     //Delete bay events
     handleDeleteBay(e){
         document.querySelector(`#${e}`).classList.add("app-bay-hiddentrue");
@@ -49,11 +55,12 @@ class BayContainer extends Component{
             showAddBayDialog : !prevState.showAddBayDialog,
         }));
       }
-      handleChange(e,newval){
-        this.setState(
-            (prevState,props)=>({
-            newBayVal:newval,
-        }));
+
+      handleChange(e){
+            this.setState({
+              newBayVal:e.target.value,
+            }); 
+       
       }
 
       handleAddBayFinishChange(e){
@@ -65,49 +72,45 @@ class BayContainer extends Component{
 
     render(){
 
-        const AddBayDialogActions = [
-            <FlatButton
-              label="Cancel"
-              primary={true}
-              keyboardFocused={true}
-              onClick={(e)=>this.handleAddBayCancel(e)}
-            />,
-            <FlatButton
-              label="Add"
-              primary={true}
-              onClick={(e)=>this.handleAddBayConfirm(e)}
-            />,
-          ];
-
         return(
-            <div class={this.props.className}> 
-                 <RaisedButton 
-                    label="New bay"
+            <div className={this.props.className}> 
+                 <Button 
                     className={this.props.className + "-button-newBay"}
-                    onClick={(e)=>this.handleAddBay(e)}
-                />
-                <div class={this.props.className +"-bayList"}>
+                    onClick={(e)=>this.handleAddBay(e)}>
+                    New Bay
+                </Button>
+                <div className={this.props.className +"-bayList"}>
                 
-                   {this.state.lstBay.map((bay,index) =>  
+                   { this.state.lstBay.map((bay,index) =>  
                    <Bay 
                     key={bay.bayId} 
                     bayId ={bay.bayId} 
                     bayTitle={bay.bayTitle} 
                     className={ this.props.className + "-bay"} 
                     deletebay={this.handleDeleteBay}>
-                   </Bay>)}   
+                   </Bay>) }   
                    
-                    <Dialog     title={"Add new Bay"}
+                    <Dialog     
                                 modal="true"
                                 open={this.state.showAddBayDialog}
-                                actions={AddBayDialogActions}>
-                    
+                                aria-labelledby="form-dialog-title"
+                                >
+                        <DialogTitle id="form-dialog-title">Add new bay into the kanban</DialogTitle>
                         <TextField
-                            hintText="bay title"
+                            label="bay title"
                             className={this.props.className + "-textField "}
-                            onChange={(e,newval)=>this.handleChange(e,newval)}
+                            onKeyDown={(e,newval)=>this.handleChange(e,newval)}
+                            onChange={(e)=>this.handleChange(e)}
                             onKeyPress={(e)=>this.handleAddBayFinishChange(e)}
                         /> 
+                        <DialogActions>
+                            <Button onClick={(e)=>this.handleAddBayCancel(e)} color="primary">
+                                 Cancel
+                            </Button>
+                            <Button onClick={(e)=>this.handleAddBayConfirm(e)} color="primary">
+                                 Add
+                            </Button>
+                        </DialogActions>
                     </Dialog>
                 </div>
             </div>   

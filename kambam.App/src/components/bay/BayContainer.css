@@ -9,12 +9,13 @@
     display:none;
   }
 
-.app-bayContainer-button-newBay{
-    margin:1em;
+  button.app-bayContainer-button-newBay{
+    background-color:  rgb(0, 188, 212) !important ; 
+    margin:3em;
   }
-  .app-bayContainer-button-newBay button{
-      background-color: rgb(0, 188, 212) !important ; 
-  }
-  .app-bayContainer-button-newBay span{
-    color:white !important;
+
+
+  .app-bayContainer-textField{
+    max-width:80%;
+    margin:2em !important;
   }

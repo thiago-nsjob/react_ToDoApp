@@ -1,8 +1,20 @@
 import React, { Component } from 'react';
-import {Paper,SvgIcon,FlatButton,TextField,Dialog,Divider,FloatingActionButton} from '@material-ui/core';
+
+import Paper from '@material-ui/core/Paper';
+import Typography from '@material-ui/core/Typography';
+import Dialog from '@material-ui/core/Dialog';
+import TextField from '@material-ui/core/TextField';
+import Button from '@material-ui/core/Button';
+import DialogTitle from '@material-ui/core/DialogTitle';
+import DialogActions from '@material-ui/core/DialogActions';
+import DialogContent from '@material-ui/core/DialogContent';
+import DialogContentText from '@material-ui/core/DialogContentText';
+import Divider from '@material-ui/core/Divider';
+
 import ContentAdd from '@material-ui/icons/Add';
 import ActionDelete from '@material-ui/icons/Delete';
 import ImageEdit from '@material-ui/icons/Edit';
+
 import Title from './Title';
 import Postit from '../postit/Postit';
 import {red} from '@material-ui/core/colors';
@@ -17,8 +29,6 @@ class Bay extends Component{
         super(props);
 
         //TODO:Remove after api implementation
-        
-
 
         this.state={
             baytitle: props.bayTitle,
@@ -36,6 +46,7 @@ class Bay extends Component{
    getJsonData(){
 
     }
+
     getNewID() {
         return (((1+Math.random())*0x10000)|0).toString(16).substring(1); 
     }   
@@ -148,20 +159,7 @@ class Bay extends Component{
 
     render(){
 
-        const deleteDialogActions = [
-            <FlatButton
-              label="Cancel"
-              primary={true}
-              keyboardFocused={true}
-              onClick={(e)=>this.handleDeleteClose(e)}
-            />,
-            <FlatButton
-              label="Delete"
-              primary={true}
-              onClick={(e)=>this.handleDeleteConfirm(e)}
-            />,
-          ];
-
+    
         return(
             <Paper  id={this.props.bayId} 
                     className={this.props.className} 
@@ -170,53 +168,63 @@ class Bay extends Component{
                     onDragEnter={(e)=>this.handleDragEnter(e)}
                     onDrop={(e)=>this.handleDrop(e)}
                     onDragEnd={(e)=>this.handleDragEnd(e)}>
-            <Title
-                className={this.props.className+"-hidden" + this.state.isTitleHidden  + " " + this.props.className  }
-                title={this.state.baytitle}
-            />   
+            <Typography className={this.props.className+"-hidden" + this.state.isTitleHidden  + " " + this.props.className  }> 
+                {this.state.baytitle}
+            </Typography>
              <TextField
-                hintText="title text"
+                label="title text"
                 className={this.props.className+"-hidden" + this.state.isEditTitleHidden + " "  + this.props.className + "-textField "}
                 onChange={(e)=>this.handleTitleChange(e)}
                 onKeyPress={(e)=>this.handleTitleFinishChange(e)}
                 value={this.state.baytitle}
             /> 
-            <FloatingActionButton
+            <Button variant="fab"
                 mini={true}
                 onClick={(e)=>this.handleEditTitleClick(e)}
                 className={this.props.className + "-editpostit " }
             >
-            <ImageEdit/></FloatingActionButton>
-            <FloatingActionButton
+            <ImageEdit/></Button>
+            <Button variant="fab"
                  mini={true} 
                  onClick={(e)=>this.handleAddPostIt(e)}
                  className={this.props.className + "-addpostit " }
             >
             <ContentAdd/>
-            </FloatingActionButton>
-            <FloatingActionButton
+            </Button>
+            <Button variant="fab"
                 mini={true}
                 onClick={(e)=>this.handleDeleteBay(e)}
                 className={this.props.className + "-deletepostit " }  
-           
             >
             <ActionDelete/>
-            </FloatingActionButton>
+            </Button>
+            
             <Dialog
                     title={"Bay deletion!"}
                     modal="true"
                     open={this.state.showDeleteDialog}
-                    actions={deleteDialogActions}
+                    aria-labelledby="form-dialog-title"
             >
-            {"Are you sure you want to delete bay " + this.state.baytitle + " ?"}
+            <DialogTitle id="form-dialog-title">{"Are you sure you want to delete bay " + this.state.baytitle + " ?"}
+            </DialogTitle>
+
+             <DialogActions>
+                            <Button onClick={(e)=>this.handleDeleteClose(e)} color="primary">
+                                 Cancel
+                            </Button>
+                            <Button onClick={(e)=>this.handleDeleteConfirm(e)} color="secondary">
+                                 Delete
+                            </Button>
+                        </DialogActions>
             </Dialog>
+
             <Divider />
             <div class={this.props.className + "-postits"}>
               {this.state.lstPostit.map((postit,index) =>        
                     <Postit id={this.getNewID()} 
                             className={this.props.className}
-                            title={postit.title} 
-                            content={postit.content} 
+                            title={"Task 1 - Thiangs to do everytime"} 
+                            content={"Details: lelfisldfi jjwiopeow powepoiwpoiq wepi we irjoqweir wejr qweojr wopeijr"} 
                             hasBlockingIssue={postit.hasBlockingIssue} 
                             position={index} 
                             sourcebay={this.props.bayId} 
