@@ -1,38 +1,26 @@
-/*postit main body*/
+/*postit body*/
+
+
+div.app-bayContainer-bay-postitcard     {
+    margin:0.5em;; 
+}
 div.app-bayContainer-bay-postitcontent     {
-    flex: 1 1 auto;
+    flex:1 1 auto ;
     max-width:16pc!important;
-    
-    margin:0.5em;
-    background-color:bisque;
-    border-color: green!important;
-    border: 2px!important; 
+    padding-bottom: 0.4em !important;
+    display: flex;
 }
 .app-bayContainer-bay-postittitle {
-    display: inline !important;
+    justify-content: center;
+    padding-top: 0.3em;
+    margin-right:1em !important; 
 }
 
-/*postit header*/
-div.app-bayContainer-bay-postitheader {
-    padding: 0.2em !important; 
-    height: 9em!important;
+.app-bayContainer-bay-postitexpand{
+    max-width: 1em;
+    max-height: 1em;
+    padding-left: 1em;
 }
-div.app-bayContainer-bay-postitheader div{
-    padding-right: 10% !important;
-}
-div.app-bayContainer-bay-postitheader div span:first-of-type{
-    margin: 0.5em !important;
-    height: 3em!important;
-}
-div.app-bayContainer-bay-postitheader div span:last-of-type{
-    margin: 0.5em !important;
-    height: 5em!important;
-    word-break: break-all!important;
-}
-div.app-bayContainer-bay-postitheader button{
-    width:32px!important;
-   }
-/*postit header*/
 
 
 /*postit buttons*/
@@ -50,8 +38,6 @@ div.app-bayContainer-bay-postitheader button{
 
 
 /*postit buttons*/
-
-
 .app-bayContainer-bay-textfield::-webkit-scrollbar{
     display: none;
 }
@@ -61,4 +47,14 @@ div.app-bayContainer-bay-postitheader button{
 }
 .showoptions-false{
     display: none !important ;
+}
+
+/* postit edit fields */
+
+.app-bayContainer-bay-txt-postit-title{
+    margin: 2em !important;
+}
+
+.app-bayContainer-bay-txt-postit-content{
+    margin: 2em !important;
 }

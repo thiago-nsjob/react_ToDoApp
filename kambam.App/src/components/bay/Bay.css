@@ -25,11 +25,10 @@
     margin: 0.5em!important;
 }
 
-div.app-bayContainer-bay-bayTitle{
-    position: relative;
+.app-bayContainer-bay-title{
     text-align: left;
-    font-size: 2vw;
-    margin: 0.25em;
+    font-size: 15pt !important;;
+    margin: 0.25em !important;;
 }
 
 .app-bayContainer-bay-hiddentrue{

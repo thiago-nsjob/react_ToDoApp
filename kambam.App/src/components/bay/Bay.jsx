@@ -109,6 +109,7 @@ class Bay extends Component{
 
     handleDrop(e){
         let postit = JSON.parse(e.dataTransfer.getData('text/plain'));
+        console.log(postit);
         //if the source bay id isn't the current, add the post it
 
             let newlst = this.state.lstPostit.slice(0); 
@@ -148,7 +149,7 @@ class Bay extends Component{
     handleAddPostIt(e){        
         let newArr = this.state.lstPostit.slice(0);
         
-        newArr.push({title:"newPostit",content:"----",hasBlockingIssue:false});
+        newArr.push({title:"newPostit",content:"----",hasBlockingIssue:false,showEditPostit:true});
 
         this.setState((prevState,props) =>({
             lstPostit: newArr
@@ -163,17 +164,16 @@ class Bay extends Component{
         return(
             <Paper  id={this.props.bayId} 
                     className={this.props.className} 
-                    zDepth={1}
                     onDragOver={(e)=>this.handleDragOver(e)}
                     onDragEnter={(e)=>this.handleDragEnter(e)}
                     onDrop={(e)=>this.handleDrop(e)}
                     onDragEnd={(e)=>this.handleDragEnd(e)}>
-            <Typography className={this.props.className+"-hidden" + this.state.isTitleHidden  + " " + this.props.className  }> 
+            <Typography className={this.props.className + "-title " + "hidden" + !this.state.isEditTitleHidden  }> 
                 {this.state.baytitle}
             </Typography>
              <TextField
-                label="title text"
-                className={this.props.className+"-hidden" + this.state.isEditTitleHidden + " "  + this.props.className + "-textField "}
+                label="Set Bay Name"
+                className={this.props.className + "-textField " + " hidden" + this.state.isEditTitleHidden}
                 onChange={(e)=>this.handleTitleChange(e)}
                 onKeyPress={(e)=>this.handleTitleFinishChange(e)}
                 value={this.state.baytitle}
@@ -219,17 +219,18 @@ class Bay extends Component{
             </Dialog>
 
             <Divider />
-            <div class={this.props.className + "-postits"}>
+            <div className={this.props.className + "-postits"}>
               {this.state.lstPostit.map((postit,index) =>        
                     <Postit id={this.getNewID()} 
                             className={this.props.className}
-                            title={"Task 1 - Thiangs to do everytime"} 
-                            content={"Details: lelfisldfi jjwiopeow powepoiwpoiq wepi we irjoqweir wejr qweojr wopeijr"} 
+                            title={postit.title} 
+                            content={postit.content} 
                             hasBlockingIssue={postit.hasBlockingIssue} 
                             position={index} 
                             sourcebay={this.props.bayId} 
                             setLeavingPostit={this.handleChildPostitDragStart}
-                            deletePostit={this.handleDeletePostit} />
+                            deletePostit={this.handleDeletePostit}
+                            showEditPostit={postit.showEditPostit} />
               )}
               </div>
             </Paper>

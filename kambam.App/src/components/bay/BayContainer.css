@@ -2,20 +2,24 @@
 .app-bayContainer-bayList{
     display:flex;
     flex-direction: row;
+    justify-content: center;
 
   }
   
-.app-bay-hiddentrue{
-    display:none;
+.hiddenfalse{
+    display: block !important;
+  }
+
+.hiddentrue{
+    display:none !important;
   }
 
   button.app-bayContainer-button-newBay{
     background-color:  rgb(0, 188, 212) !important ; 
     margin:3em;
   }
-
-
+  
   .app-bayContainer-textField{
     max-width:80%;
-    margin:2em !important;
+    margin:3em !important;
   }

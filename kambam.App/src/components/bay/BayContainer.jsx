@@ -91,6 +91,7 @@ class BayContainer extends Component{
                    </Bay>) }   
                    
                     <Dialog     
+                                className={this.props.className +"-newbaydialog"}
                                 modal="true"
                                 open={this.state.showAddBayDialog}
                                 aria-labelledby="form-dialog-title"
