@@ -21,7 +21,7 @@ class Main extends Component {
         }
  }
 
-
+    //Color pallet to be used: http://www.color-hex.com/color-palette/61300
     //TODO: Add delete on server, and call render again
     
     handleSaveProject(e){
@@ -61,33 +61,35 @@ class Main extends Component {
         ]
 
         return ( 
-            <div classename="main-menu-root">
-    
-            <AppBar position="static" className="teste">
-                <Toolbar>
-                <IconButton className="menu-root-title" color="inherit" aria-label="Menu">
-                    <Close />
-                </IconButton>
-                <Typography variant="title" color="inherit" className="menu-root-title">
-                    {this.props.projectTitle}
-                </Typography>
-                <Button className="main-menu-save"
-                    onClick={(e)=>this.handleSaveProject(e)}>
-                    Save</Button>
-                </Toolbar>
-            </AppBar>
-            
-            <BayContainer
-                className ="app-bayContainer" bayList={lstBay}
-            />
-           
-            <Snackbar
-                open={this.state.showSnack}
-                message={this.state.snackMessage}
-                autoHideDuration={4000}
-                onClose={(e)=>this.handleCloseSnack(e)}
-                />
-            </div>
+            <div classename="project-kanban">
+                <div classename="project-menu">                
+                    <AppBar position="static" className="menu-root">
+                        <Toolbar>
+                        <IconButton className="menu-root-title" color="inherit" aria-label="Menu">
+                            <Close />
+                        </IconButton>
+                        <Typography variant="title" color="inherit" className="menu-root-title">
+                            {this.props.projectTitle}
+                        </Typography>
+                        <Button className="main-menu-save"
+                            onClick={(e)=>this.handleSaveProject(e)}>
+                            Save</Button>
+                        </Toolbar>
+                    </AppBar>
+                    <Snackbar
+                        open={this.state.showSnack}
+                        message={this.state.snackMessage}
+                        autoHideDuration={4000}
+                        onClose={(e)=>this.handleCloseSnack(e)}
+                        />
+                </div>
+                <div className="project-content">
+                    <BayContainer
+                        className ="app-bayContainer" bayList={lstBay}
+                    />
+                </div>
+
+        </div>
         );
     }
 }

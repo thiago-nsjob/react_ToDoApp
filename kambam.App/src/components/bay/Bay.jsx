@@ -170,13 +170,16 @@ class Bay extends Component{
                     onDragEnd={(e)=>this.handleDragEnd(e)}>
             <Typography className={this.props.className + "-title " + "hidden" + !this.state.isEditTitleHidden  }> 
                 {this.state.baytitle}
+                <Divider className={this.props.className + "-divider"} />
             </Typography>
              <TextField
                 label="Set Bay Name"
-                className={this.props.className + "-textField " + " hidden" + this.state.isEditTitleHidden}
+                className={this.props.className + "-fieldbayname " + " hidden" + this.state.isEditTitleHidden}
                 onChange={(e)=>this.handleTitleChange(e)}
                 onKeyPress={(e)=>this.handleTitleFinishChange(e)}
                 value={this.state.baytitle}
+               
+
             /> 
             <Button variant="fab"
                 mini={true}
@@ -218,7 +221,7 @@ class Bay extends Component{
                         </DialogActions>
             </Dialog>
 
-            <Divider />
+           
             <div className={this.props.className + "-postits"}>
               {this.state.lstPostit.map((postit,index) =>        
                     <Postit id={this.getNewID()} 

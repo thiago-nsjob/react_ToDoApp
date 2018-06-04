@@ -1,8 +1,9 @@
 
 
-.main-menu-root{
+.menu-root{
     display: flex;
     flex-grow: 1;
+    background-color:#c6427b !important;
 }
 
 .menu-root-close{
@@ -13,7 +14,14 @@
 }
 
 .main-menu-save{
-    
-    background-color: cadetblue !important;
-    
+    background-color: #1e306e !important;
+    color: white !important;
+    font-weight: bold !important;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif !important; 
+}
+
+.project-content{
+    background-color: #1e306e !important;
+    min-height: 50em !important;
+    width: 100%;
 }
