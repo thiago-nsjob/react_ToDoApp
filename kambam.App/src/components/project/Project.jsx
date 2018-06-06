@@ -8,17 +8,19 @@ import IconButton from '@material-ui/core/IconButton';
 import Close from '@material-ui/icons/Close';
 import Snackbar from '@material-ui/core/Snackbar';
 
-import './Main.css';
+import './Project.css';
 
 import BayContainer from '../bay/BayContainer';
  
-class Main extends Component {
+class Project extends Component {
  constructor(props){
+        
         super(props)
         this.state={
             showSnack:false,
             snackMessage:"",
         }
+
  }
 
     //Color pallet to be used: http://www.color-hex.com/color-palette/61300
@@ -51,27 +53,36 @@ class Main extends Component {
             })
         );
     }
+
+    handleAddBay(e){
+        this.childBayConteiner.handleAddBay(e);
+    };
     
     //Add bay events
 
     render() {
 
         //MOC:some default bays to start with
-          const lstBay =  [{bayId:"bay1",bayTitle:"To Do"},{bayId:"bay2",bayTitle:"Doing"},{bayId:"bay3",bayTitle:"Done"}
-        ]
-
+        const lstBay =  [{bayId:"bay1",bayTitle:"To Do"},{bayId:"bay2",bayTitle:"Doing"},{bayId:"bay3",bayTitle:"Done"}]
+       
+        
         return ( 
             <div classename="project-kanban">
                 <div classename="project-menu">                
-                    <AppBar position="static" className="menu-root">
+                    <AppBar position="static" className="project-menu-root">
                         <Toolbar>
-                        <IconButton className="menu-root-title" color="inherit" aria-label="Menu">
+                        <IconButton className="project-menu-root-close" color="inherit" aria-label="Menu">
                             <Close />
                         </IconButton>
-                        <Typography variant="title" color="inherit" className="menu-root-title">
+                        <Typography variant="title" color="inherit" className="project-menu-root-title">
                             {this.props.projectTitle}
                         </Typography>
-                        <Button className="main-menu-save"
+                        <Button 
+                            className={"project-menu-newbay"}
+                            onClick={(e)=>this.handleAddBay(e)}>
+                            New Bay
+                        </Button>
+                        <Button className="project-menu-save"
                             onClick={(e)=>this.handleSaveProject(e)}>
                             Save</Button>
                         </Toolbar>
@@ -86,6 +97,7 @@ class Main extends Component {
                 <div className="project-content">
                     <BayContainer
                         className ="app-bayContainer" bayList={lstBay}
+                        onRef={(ref) => (this.childBayConteiner = ref)} 
                     />
                 </div>
 
@@ -94,4 +106,4 @@ class Main extends Component {
     }
 }
 
-export default Main;
+export default Project;

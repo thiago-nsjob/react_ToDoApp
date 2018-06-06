@@ -7,6 +7,8 @@ import DialogTitle from '@material-ui/core/DialogTitle';
 import DialogActions from '@material-ui/core/DialogActions';
 import DialogContent from '@material-ui/core/DialogContent';
 import DialogContentText from '@material-ui/core/DialogContentText';
+
+
 import Bay from './Bay';
 import './BayContainer.css';
 
@@ -19,13 +21,22 @@ class BayContainer extends Component{
             lstBay:props.bayList,
             showAddBayDialog:false,
             newBayVal:"",
+            displayColorPicker: false
         }
     }
+
+    componentDidMount() {
+        this.props.onRef(this);
+    }
+    componentWillUnmount() {
+        this.props.onRef(undefined);
+    }
+    
 
     //TODO: Add delete on server, and call render again
     //Delete bay events
     handleDeleteBay(e){
-        document.querySelector(`#${e}`).classList.add("app-bay-hiddentrue");
+        document.querySelector(`#${e}`).classList.add("hiddentrue");
      }
      //Delete bay events
  
@@ -67,6 +78,13 @@ class BayContainer extends Component{
         if (e.key === "Enter"){
             this.handleAddBayConfirm(e);
         }
+
+    }
+
+    handleDisplayColorClick(e) {
+        (prevState,props)=>({
+            displayColorPicker : !prevState.displayColorPicker,
+        });
     }
        //Add bay events
 
@@ -74,11 +92,19 @@ class BayContainer extends Component{
 
         return(
             <div className={this.props.className}> 
-                 <Button 
-                    className={this.props.className + "-button-newBay"}
-                    onClick={(e)=>this.handleAddBay(e)}>
-                    New Bay
-                </Button>
+
+               {/* Old controls   
+                <div className={this.props.className + "-bayControls"}> 
+                        <div className={this.props.className + "-bayControls-newBay"}>
+                            
+                        </div>
+                        <div className={this.props.className + "-bayControls-colorpicker"}>
+                        
+                        
+                        </div>      
+                        
+                    </div>
+                */}
                 <div className={this.props.className +"-bayList"}>
                 
                    { this.state.lstBay.map((bay,index) =>  

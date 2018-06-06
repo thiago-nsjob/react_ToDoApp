@@ -1,19 +1,18 @@
 /*postit body*/
 
-
 div.app-bayContainer-bay-postitcard     {
     margin:0.5em;; 
 }
 div.app-bayContainer-bay-postitcontent     {
-    flex:1 1 auto ;
     max-width:16pc!important;
-    padding-bottom: 0.4em !important;
+    padding: 0px !important;
+    margin: 0.5em;
     display: flex;
 }
 .app-bayContainer-bay-postittitle {
-    justify-content: center;
-    padding-top: 0.3em;
+    padding-top: 1em;
     margin-right:1em !important; 
+    font-weight: bold;
 }
 
 .app-bayContainer-bay-postitexpand{
@@ -22,6 +21,16 @@ div.app-bayContainer-bay-postitcontent     {
     padding-left: 1em;
 }
 
+.app-bayContainer-bay-avatar{
+    flex:1 1 auto;
+    padding-left: -3em;
+    margin-right: 0.5em;
+    width: 2em !important;
+    height: 2em !important;
+
+    max-width: 2em !important;
+    max-height: 2em !important;
+}
 
 /*postit buttons*/
 .app-bayContainer-bay-postitedit,.app-bayContainer-bay-postitdelete{
@@ -58,3 +67,4 @@ div.app-bayContainer-bay-postitcontent     {
 .app-bayContainer-bay-txt-postit-content{
     margin: 2em !important;
 }
+

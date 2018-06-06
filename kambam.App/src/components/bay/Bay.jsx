@@ -43,6 +43,16 @@ class Bay extends Component{
             this.handleDeletePostit= this.handleDeletePostit.bind(this);
    }
 
+   startPostitStructure(){
+        const postit = {
+                  title:"New Task"
+                , content:"write details here"
+                , hasBlockingIssue:false
+                , showEditPostit:true
+                , style:{background:"#eeeeee"}}
+    return postit;
+   } 
+   
    getJsonData(){
 
     }
@@ -140,16 +150,14 @@ class Bay extends Component{
     this.setState({
         postitToDelete:e
     });
-
     //although its not meaningfull, its better for the sake of non repeating code 
     this.handleDragEnd(e);
-
 }
 
     handleAddPostIt(e){        
-        let newArr = this.state.lstPostit.slice(0);
-        
-        newArr.push({title:"newPostit",content:"----",hasBlockingIssue:false,showEditPostit:true});
+        let newArr = this.state.lstPostit.slice(0); 
+
+        newArr.push(this.startPostitStructure());
 
         this.setState((prevState,props) =>({
             lstPostit: newArr
@@ -224,7 +232,8 @@ class Bay extends Component{
            
             <div className={this.props.className + "-postits"}>
               {this.state.lstPostit.map((postit,index) =>        
-                    <Postit id={this.getNewID()} 
+                    <Postit 
+                            id={this.getNewID()} 
                             className={this.props.className}
                             title={postit.title} 
                             content={postit.content} 
@@ -233,7 +242,8 @@ class Bay extends Component{
                             sourcebay={this.props.bayId} 
                             setLeavingPostit={this.handleChildPostitDragStart}
                             deletePostit={this.handleDeletePostit}
-                            showEditPostit={postit.showEditPostit} />
+                            showEditPostit={postit.showEditPostit} 
+                            style = {postit.style}/>
               )}
               </div>
             </Paper>

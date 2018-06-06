@@ -7,6 +7,7 @@ import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
 import IconButton from '@material-ui/core/IconButton';
 import Divider from '@material-ui/core/Divider';
+import Avatar from '@material-ui/core/Avatar';
 
 import Card from '@material-ui/core/Card';
 import CardActions from '@material-ui/core/CardActions';
@@ -24,6 +25,7 @@ import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 
 import {darkBlack} from '@material-ui/core/colors';
 import "./Postit.css";
+import ColorPicker from '../colorPicker/ColorPicker';
 import postit from "./img/postit.svg"
 
 
@@ -38,7 +40,7 @@ class Postit extends Component{
             content: props.content,
             hasBlockingIssue: props.hasBlockingIssue,
             position:props.position,
-            
+            style:props.style, 
             expanded:false,
             showEditPostit: props.showEditPostit
         }
@@ -81,29 +83,29 @@ class Postit extends Component{
         this.setState({ showEditPostit: !this.state.showEditPostit });
     }
 
-
+    handleSetColor(colorId){
+        this.setState({ style: {background:colorId} });
+    }
     
     render(){
 
-        const style = {
-            underlineStyle: {
-              color: darkBlack,
-            },
-          };
-
-
+        
         return(
            <div id={this.props.id} 
                 className={this.props.className + "-postit"}
                 onDragStart={(e)=>this.handleOnDragStart(e)} 
                 draggable="true"
                 >
-          
             <Card  
+                style={this.state.style}
                 className={this.props.className +"-postitcard"}>
                 <CardContent 
                  className={this.props.className +"-postitcontent"}>
-                    
+                    <Avatar
+                        alt="Thiago Silva"
+                        src="https://media.licdn.com/dms/image/C5603AQFq7AGnVzHR6A/profile-displayphoto-shrink_200_200/0?e=1533772800&v=beta&t=S6POQIPosT0Ht93QwLjl0O5B9TrInKmlFlt4wuPSYX8"
+                        className={this.props.className +"-avatar"}
+                    />
                     <Typography 
                        className={this.props.className +"-postittitle"}>
                         {this.state.title}
@@ -162,11 +164,16 @@ class Postit extends Component{
                         onChange={(e)=>this.handleContentChange(e)}
                         value = {this.state.content}
                     /> 
+                    <ColorPicker setColor={(e)=>this.handleSetColor(e)} 
+                                 currentColor={this.state.style.background } />
                     <DialogActions>
                         <Button onClick={(e)=>this.handleEditClick(e)} color="primary">
                                 Close
                         </Button>
                     </DialogActions>
+
+                    
+
                 </Dialog>         
             </Card>
 
