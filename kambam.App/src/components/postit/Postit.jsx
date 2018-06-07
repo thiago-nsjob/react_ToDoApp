@@ -42,7 +42,8 @@ class Postit extends Component{
             position:props.position,
             style:props.style, 
             expanded:false,
-            showEditPostit: props.showEditPostit
+            showEditPostit: props.showEditPostit,
+            showDeletePostitDialog:false
         }
     }
 
@@ -63,6 +64,15 @@ class Postit extends Component{
             this.handleEditClick(e);
     }
 
+    handleDeletePostit(e){
+        this.setState((prevState,props) =>({
+            showDeletePostitDialog: !prevState.showDeletePostitDialog
+        }))
+    }
+
+    handleDeletePostitConfirm(e){
+        this.props.deletePostit(this.props.position -1)
+    }
     /* state change */
     handleTitleChange(e){
         this.setState({
@@ -139,7 +149,7 @@ class Postit extends Component{
                             size="small"   
                             className={this.props.className +"-postitdelete"} 
                             color="secondary"
-                            onClick={(e)=>this.props.deletePostit(this.props.position -1)}> 
+                            onClick={(e)=>this.handleDeletePostit(e)}> 
                             <ActionDelete/>
                         </IconButton> 
                     </CardActions>
@@ -171,10 +181,27 @@ class Postit extends Component{
                                 Close
                         </Button>
                     </DialogActions>
+                </Dialog>
 
-                    
+                <Dialog
+                        title={"Postit deletion!"}
+                        modal="true"
+                        open={this.state.showDeletePostitDialog}
+                        aria-labelledby="form-dialog-postit"
+                >
+                <DialogTitle id="form-dialog-postit">{"Are you sure you want to delete the postit " + this.state.title + " ?"}
+                </DialogTitle>
 
-                </Dialog>         
+                <DialogActions>
+                        <Button onClick={(e)=>this.handleDeletePostit(e)} color="primary">
+                            Cancel
+                        </Button>
+                        <Button onClick={(e)=>this.handleDeletePostitConfirm(e)} color="secondary">
+                            Delete
+                        </Button>
+                    </DialogActions>
+                </Dialog>
+
             </Card>
 
          </div>

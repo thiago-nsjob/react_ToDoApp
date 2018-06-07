@@ -85,7 +85,6 @@ class Bay extends Component{
 
     //Delete bay events
     handleDeleteBay(e){
-
         this.setState((prevState,props) =>({
             showDeleteDialog: !prevState.showDeleteDialog
         }))
@@ -154,7 +153,7 @@ class Bay extends Component{
     this.handleDragEnd(e);
 }
 
-    handleAddPostIt(e){        
+handleAddPostIt(e){        
         let newArr = this.state.lstPostit.slice(0); 
 
         newArr.push(this.startPostitStructure());
