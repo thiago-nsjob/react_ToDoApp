@@ -7,6 +7,10 @@ import Button from '@material-ui/core/Button';
 import IconButton from '@material-ui/core/IconButton';
 import Close from '@material-ui/icons/Close';
 import Snackbar from '@material-ui/core/Snackbar';
+import Dialog from '@material-ui/core/Dialog';
+import DialogTitle from '@material-ui/core/DialogTitle';
+import DialogActions from '@material-ui/core/DialogActions';
+
 
 import './Project.css';
 
@@ -19,11 +23,12 @@ class Project extends Component {
         this.state={
             showSnack:false,
             snackMessage:"",
+            showExitDialog:false,
         }
 
  }
 
-    //Color pallet to be used: http://www.color-hex.com/color-palette/61300
+    
     //TODO: Add delete on server, and call render again
     
     handleSaveProject(e){
@@ -71,7 +76,10 @@ class Project extends Component {
                 <div classename="project-menu">                
                     <AppBar position="static" className="project-menu-root">
                         <Toolbar>
-                        <IconButton className="project-menu-root-close" color="inherit" aria-label="Menu">
+                        <IconButton className="project-menu-root-close" 
+                                    color="inherit" 
+                                    aria-label="Menu"
+                                    onClick={(e)=>{this.setState({showExitDialog:true})}}>
                             <Close />
                         </IconButton>
                         <Typography variant="title" color="inherit" className="project-menu-root-title">
@@ -100,6 +108,24 @@ class Project extends Component {
                         onRef={(ref) => (this.childBayConteiner = ref)} 
                     />
                 </div>
+
+                <Dialog
+                                            title={"Exit current project"}
+                                            modal="true"
+                                            open={this.state.showExitDialog}
+                                            aria-labelledby="form-dialog-title"
+                                    >
+                                    <DialogTitle id="form-dialog-title">{`Are you sure you want to exit project ${this.state.projectTitle} ?`}
+                                    </DialogTitle>
+                                    <DialogActions>
+                                                    <Button onClick={(e)=>this.props.history.push("/")} color="primary">
+                                                        OK
+                                                    </Button>
+                                                    <Button onClick={(e)=>this.setState({showExitDialog:false})} color="primary">
+                                                        Cancel
+                                                    </Button>
+                                                </DialogActions>
+                                    </Dialog>
 
         </div>
         );

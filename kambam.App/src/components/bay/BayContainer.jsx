@@ -122,7 +122,7 @@ class BayContainer extends Component{
                                 open={this.state.showAddBayDialog}
                                 aria-labelledby="form-dialog-title"
                                 >
-                        <DialogTitle id="form-dialog-title">Add new bay into the kanban</DialogTitle>
+                        <DialogTitle id="form-dialog-title">Add new bay onto kanban</DialogTitle>
                         <TextField
                             label="bay title"
                             className={this.props.className + "-textField "}

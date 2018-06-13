@@ -1,0 +1,27 @@
+.header-root{
+  
+}
+
+.header-appbar{
+    display: flex;
+    flex-direction: row;
+    flex-grow: 1;
+    background: #563672!important;
+}
+.header-appbar-title{
+    text-align: left;
+    flex:10;
+}
+.header-appbar-logo{
+    flex:1;
+}
+.header-appbar-logo-img{
+    margin-top: 1em;
+    max-width: 7em;
+    max-height: 10em;
+    display: inline;
+}
+
+.header-appbar-logout{
+   margin-top: 0.4em !important;
+}

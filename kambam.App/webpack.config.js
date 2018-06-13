@@ -11,7 +11,8 @@ module.exports = {
   entry: './src/index.js',
   output: {
     path: path.resolve('./dist'),
-    filename: 'bundle.js'
+    filename: 'bundle.js',
+    publicPath: '/'
   },
   plugins: [
          /* template of the entry html page*/
@@ -25,7 +26,8 @@ module.exports = {
       ],
   devServer: {
     contentBase: "./dist",
-    hot: true
+    hot: true,
+    historyApiFallback: true,
     },
   mode:"none",
   module: {
