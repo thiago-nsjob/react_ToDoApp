@@ -11,14 +11,10 @@ import logoimg from '../../static/logo.svg'
 class Header extends Component{
 constructor(props){
     super(props)
-
-    this.handleSignOut = this.handleSignOut.bind(this);
 }
 
 handleSignOut(){
-    console.log(this.props);
     this.props.history.push("/login");
-    
 }
 
 
@@ -35,18 +31,19 @@ render(){
                                 <img src={logoimg} className="header-appbar-logo-img"/>
                             </div>
                                 <Typography variant="title" color="inherit" className="header-appbar-title">
-                                    {getUserInfo()}
+                                    Welcome {getUserInfo()} !
                                 </Typography>
-
-                                    <Button
-                                        variant="fab" 
-                                        className="header-appbar-logout"
-                                        onClick={(e)=>handleSignOut().then(this.handleSignOut())}
-                                    >
+                                <Button
+                                    variant="fab" 
+                                    className="header-appbar-logout"
+                                    onClick={(e)=>handleSignOut().then(this.handleSignOut())}
+                                    about="Add new project"
+                                >
                                     <SvgIcon>
                                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M21 3.01H3c-1.1 0-2 .9-2 2V9h2V4.99h18v14.03H3V15H1v4.01c0 1.1.9 1.98 2 1.98h18c1.1 0 2-.88 2-1.98v-14c0-1.11-.9-2-2-2zM11 16l4-4-4-4v3H1v2h10v3z"/></svg> 
                                     </SvgIcon>
                                 </Button>
+                              
                             </Toolbar>
                         </AppBar>
                     </header>

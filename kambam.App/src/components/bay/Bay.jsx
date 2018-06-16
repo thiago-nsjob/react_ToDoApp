@@ -167,7 +167,6 @@ handleAddPostIt(e){
 
     render(){
 
-    
         return(
             <Paper  id={this.props.bayId} 
                     className={this.props.className} 
@@ -175,7 +174,7 @@ handleAddPostIt(e){
                     onDragEnter={(e)=>this.handleDragEnter(e)}
                     onDrop={(e)=>this.handleDrop(e)}
                     onDragEnd={(e)=>this.handleDragEnd(e)}>
-            <Typography className={this.props.className + "-title " + "hidden" + !this.state.isEditTitleHidden  }> 
+            <Typography  className={this.props.className + "-title " + "hidden" + !this.state.isEditTitleHidden  } onClick={(e)=>this.handleEditTitleClick(e)}> 
                 {this.state.baytitle}
                 <Divider className={this.props.className + "-divider"} />
             </Typography>

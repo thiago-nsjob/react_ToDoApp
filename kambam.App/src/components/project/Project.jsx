@@ -28,7 +28,9 @@ class Project extends Component {
 
  }
 
-    
+    componentDidMount(){
+      
+    }
     //TODO: Add delete on server, and call render again
     
     handleSaveProject(e){

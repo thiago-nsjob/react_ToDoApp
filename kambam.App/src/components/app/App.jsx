@@ -18,8 +18,9 @@ class App extends  Component{
                 <Switch>
                     <Route exact  path="/login" component={Login} />
                     <ProtectedRoute exact path="/" component={Home}/>
-                    <ProtectedRoute exact  path="/home" component={Home}/>
-                    <ProtectedRoute exact  path="/project" component={Project}/>
+                    <ProtectedRoute exact path="/home" component={Home}/>
+                    <ProtectedRoute exact path={`/project/:id`} component={Project} />
+                    {/* <Route exact path={`/project/:id`} component={Project} /> */}
                 </Switch>
               </AuthContext>
         );

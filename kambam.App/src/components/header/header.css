@@ -22,6 +22,7 @@
     display: inline;
 }
 
-.header-appbar-logout{
+.header-appbar-logout,.header-appbar-newproject{
    margin-top: 0.4em !important;
+   margin-left: 0.4em !important;
 }

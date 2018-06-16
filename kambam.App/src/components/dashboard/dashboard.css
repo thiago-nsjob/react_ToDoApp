@@ -1,0 +1,36 @@
+
+.hiddentrue{
+    display:none;
+}
+
+.dashboard-root{
+    width: 100%;
+    height: 90vh;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+.dashboard-project-headline{
+    display: inline-flex;
+    color: white !important;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif !important; 
+    margin: 3em!important;
+}
+
+.dashboard-project{
+    margin: 2em;
+    flex:1 1 auto;
+    max-width:16em;
+    height:20em;
+}
+.dashboard-project-card{
+    height:20em;
+
+}
+.dashboard-project-card-img{
+    height: 9em;
+}
+
+
+ 

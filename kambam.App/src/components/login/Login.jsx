@@ -10,7 +10,7 @@ import DialogActions from '@material-ui/core/DialogActions';
 
 import './login.css'
 import logoimg from '../../static/logo.svg'
-import {rKbanLogo} from  '../common/applogo'
+
 import { Redirect } from 'react-router-dom';
 
 
