@@ -1,0 +1,70 @@
+/*postit body*/
+
+div.app-bayContainer-bay-postitcard     {
+    margin:0.5em;; 
+}
+div.app-bayContainer-bay-postitcontent     {
+    max-width:16pc!important;
+    padding: 0px !important;
+    margin: 0.5em;
+    display: flex;
+}
+.app-bayContainer-bay-postittitle {
+    padding-top: 1em;
+    margin-right:1em !important; 
+    font-weight: bold;
+}
+
+.app-bayContainer-bay-postitexpand{
+    max-width: 1em;
+    max-height: 1em;
+    padding-left: 1em;
+}
+
+.app-bayContainer-bay-avatar{
+    flex:1 1 auto;
+    padding-left: -3em;
+    margin-right: 0.5em;
+    width: 2em !important;
+    height: 2em !important;
+
+    max-width: 2em !important;
+    max-height: 2em !important;
+}
+
+/*postit buttons*/
+.app-bayContainer-bay-postitedit,.app-bayContainer-bay-postitdelete{
+    
+    min-width: 1em!important;
+    min-height: 1em!important;
+    max-width:1.5em!important;
+    max-height:1.5em!important;
+    border-radius: 4px !important;
+}
+.app-bayContainer-bay-postitedit,.app-bayContainer-bay-postitdelete svg{
+    width: 100%!important;
+}
+
+
+/*postit buttons*/
+.app-bayContainer-bay-textfield::-webkit-scrollbar{
+    display: none;
+}
+
+.showoptions-true{
+    display: inherit !important;
+}
+.showoptions-false{
+    display: none !important ;
+}
+
+/* postit edit fields */
+
+.app-bayContainer-bay-txt-postit-title{
+    margin: 2em !important;
+}
+
+.app-bayContainer-bay-txt-postit-content{
+    margin: 2em !important;
+}
+

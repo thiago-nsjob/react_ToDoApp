@@ -1,0 +1,135 @@
+.login-root{
+    
+    display:flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    
+}
+
+.kanbanlogo{
+    margin-left:15vw; 
+    max-width:30em;
+    max-height: 20em;
+    flex:1 1 auto;
+    margin:5em;
+}
+.kanbanlogo-img{
+    margin-left: 5em;
+}
+
+.login-controls{
+    margin-left:10vw; 
+    flex:1 1 auto;
+    max-width: 20em !important;
+    height: 20em !important;
+    background: 	#563672!important;
+
+    display:flex !important;
+    justify-content: center !important;
+    flex-direction: column;
+}
+
+.login-controls-welcome{
+    position: relative;
+    color:	white;
+    background: 	#8e3c77!important;
+    top:-0.5em;
+    left:1.7em;
+    width: 15em !important;
+    height: 3em !important;
+    text-align: center;
+    font-size: 13pt;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif !important;
+    
+}
+.login-controls-welcome span{
+    margin-top: 1em;
+}
+
+
+.login-controls-fields{
+    flex: 2 1 auto!important;
+    margin-left: 3em
+}
+
+.login-controls-username label,input{
+    color: white !important;
+}
+.login-controls-password label,input{
+    color: white !important;
+}
+
+
+.login-controls-fields div::before{
+    border-bottom:2px solid  #fe4880 !important;
+}
+
+.login-controls-fields div::after{
+    border-bottom:2px solid  white !important;
+}
+
+.login-controls-actions{
+    flex: 1 1 auto !important;
+    margin-top: 2em;
+}
+
+.login-controls-username{
+    margin-top: 2em !important;
+}
+.login-controls-password{
+    margin-top: 2em !important;
+}
+
+.login-controls-actions button{
+    color: white;
+    background: #c6427b;
+}
+
+.login-controls-actions-signin{
+    margin-left: 3em !important;
+}
+.login-controls-actions-signup{
+    margin-left: 4em !important;
+}
+
+.snackMessage{
+    position: absolute;
+    bottom:5vh;
+    
+}
+
+@media screen and (min-width: 1090px){
+    .kanbanlogo{
+        max-width: 45em ;
+        margin-left:25vw; 
+        margin-right:10em;
+    }
+    .kanbanlogo-img{
+        margin-left: 10em;
+    }
+    
+    .login-controls{
+        margin-left:10vw; 
+      
+    }
+    
+}
+
+@media screen and (min-width: 1600px){
+    .kanbanlogo{
+        max-width: 60em ;
+        margin-left:30vw; 
+        margin-right:20em;
+    }
+    .kanbanlogo-img{
+        margin-left: 10em;
+    }
+    
+    .login-controls{
+        margin-left:10vw;
+        margin-right:10vw; 
+      
+    }
+    
+}

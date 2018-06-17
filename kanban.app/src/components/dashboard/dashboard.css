@@ -1,0 +1,41 @@
+
+.hiddentrue{
+    display:none;
+}
+
+.dashboard-root{
+    width: 100%;
+    min-height: 85vh;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+.dashboard-project-labelTitle,dashboard-project-editTitle{
+    margin: 0.5em!important;
+}
+.dashboard-project-labelDescription,dashboard-project-editDescription{
+    margin: 1em!important;
+}
+
+.dashboard-project{
+    margin: 2em;
+    flex:1 1 auto;
+    max-width:16em;
+    min-height:10em;
+}
+.dashboard-project-card{
+
+
+}
+.dashboard-project-card-img{
+    height: 9em;
+}
+
+ .dashboad-newproject{
+    position:absolute !important;
+    top:11vh;
+    right:2vh;
+    z-index: 1;
+ }
+

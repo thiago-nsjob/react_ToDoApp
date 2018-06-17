@@ -1,0 +1,29 @@
+.header-root{
+  
+}
+
+.header-appbar{
+    display: flex;
+    flex-direction: row;
+    flex-grow: 1;
+    background: linear-gradient(90deg, rgba(86,54,114,1) 0%, rgba(119,0,255,1) 100%)!important;
+}
+.header-appbar-title{
+    text-align: left;
+    flex:10;
+}
+.header-appbar-logo{
+    flex:1;
+}
+.header-appbar-logo-img{
+    margin-top: 1em;
+    max-width: 7em;
+    max-height: 10em;
+    display: inline;
+}
+
+.header-appbar-logout,.header-appbar-newproject{
+   margin-top: 0.1em !important;
+   margin-left: 0.4em !important;
+}
+
