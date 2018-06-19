@@ -52,11 +52,18 @@
     flex: 2 1 auto!important;
     margin-left: 3em
 }
-
-.login-controls-username label,input{
+ 
+div.login-controls-username  label {
     color: white !important;
 }
-.login-controls-password label,input{
+div.login-controls-password  label{
+    color: white !important;
+}
+
+div.login-controls-username  input {
+    color: white !important;
+}
+div.login-controls-password  input{
     color: white !important;
 }
 

@@ -109,11 +109,11 @@ class BayContainer extends Component{
                 
                    { this.state.lstBay.map((bay,index) =>  
                    <Bay 
-                    key={bay.bayId} 
-                    bayId ={bay.bayId} 
-                    bayTitle={bay.bayTitle} 
-                    className={ this.props.className + "-bay"} 
-                    deletebay={this.handleDeleteBay}>
+                        key={bay.bayId} 
+                        bayId ={bay.bayId} 
+                        bayTitle={bay.bayTitle} 
+                        className={ this.props.className + "-bay"} 
+                        deletebay={this.handleDeleteBay}>
                    </Bay>) }   
                    
                     <Dialog     

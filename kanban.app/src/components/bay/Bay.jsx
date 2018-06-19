@@ -184,8 +184,6 @@ handleAddPostIt(e){
                 onChange={(e)=>this.handleTitleChange(e)}
                 onKeyPress={(e)=>this.handleTitleFinishChange(e)}
                 value={this.state.baytitle}
-               
-
             /> 
             <Button variant="fab"
                 mini={true}

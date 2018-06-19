@@ -1,0 +1,16 @@
+
+Version v1
+
+General tasks
+done        - Stablish the initial design
+done        - Create main components
+ongoing     - Create signup with Redux
+pending     - Add Redux to control the data flow for the entire app
+
+
+
+TODOs
+- prevent postit to be deleted if draged to body
+- add delete functionality on drag to delete area on the project dashboard
+- refactory the code 
+- change the css organization for jcss
