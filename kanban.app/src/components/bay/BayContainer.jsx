@@ -23,6 +23,7 @@ class BayContainer extends Component{
             newBayVal:"",
             displayColorPicker: false
         }
+        this.handleBayMovedDelete = this.handleBayMovedDelete.bind(this);
     }
 
     componentDidMount() {
@@ -55,7 +56,7 @@ class BayContainer extends Component{
          }));
  
      }
-      handleAddBayConfirm(e){
+     handleAddBayConfirm(e){
         let newlstBay = this.state.lstBay;
         
         newlstBay.push({bayId:"bay"+(this.state.lstBay.length +1) , bayTitle:this.state.newBayVal});
@@ -86,35 +87,40 @@ class BayContainer extends Component{
             displayColorPicker : !prevState.displayColorPicker,
         });
     }
-       //Add bay events
+    //Add bay events
+
+    handleBayMovedDelete(postit){
+
+        let index = this.state.lstBay.findIndex((i)=>i.bayId == postit.sourcebay);
+        this.state.lstBay[index].bayRef.current.deleteMovedPostit(postit);
+    }
+
+    buildBay(bay,index){
+
+        let ref = React.createRef();
+        console.log(this.state.lstBay[index])
+        this.state.lstBay[index].bayRef = ref;
+
+        return <Bay 
+                key={index} 
+                bayId ={bay.bayId} 
+                bayTitle={bay.bayTitle} 
+                className={ this.props.className + "-bay"} 
+                deletebay={this.handleDeleteBay}
+                ref ={ref}
+                deleteBayRemains={this.handleBayMovedDelete}
+                />
+    }   
 
     render(){
 
         return(
             <div className={this.props.className}> 
-
-               {/* Old controls   
-                <div className={this.props.className + "-bayControls"}> 
-                        <div className={this.props.className + "-bayControls-newBay"}>
-                            
-                        </div>
-                        <div className={this.props.className + "-bayControls-colorpicker"}>
-                        
-                        
-                        </div>      
-                        
-                    </div>
-                */}
                 <div className={this.props.className +"-bayList"}>
                 
                    { this.state.lstBay.map((bay,index) =>  
-                   <Bay 
-                        key={bay.bayId} 
-                        bayId ={bay.bayId} 
-                        bayTitle={bay.bayTitle} 
-                        className={ this.props.className + "-bay"} 
-                        deletebay={this.handleDeleteBay}>
-                   </Bay>) }   
+                        this.buildBay(bay,index)
+                   ) }   
                    
                     <Dialog     
                                 className={this.props.className +"-newbaydialog"}

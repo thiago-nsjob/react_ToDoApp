@@ -17,15 +17,15 @@ class ColorPicker extends React.Component{
     render(){
       const hue = 200;
       return(
-      <div className="color-picker-root"> {
-        this.state.colorlist.map((item) => 
-              <div className={"color-picker"}>
-                <input type="radio" name="color" checked ={this.props.currentColor == item[hue] ? "checked":null } id={item[hue]} onClick={(e)=>this.props.setColor(item[hue])}/>
-                <label htmlFor={item[hue]}><div className="fill" style={{"background":item[hue]}}></div></label>
-              </div>                   
-            )
-        }
-        </div>
+        <div className="color-picker-root"> {
+          this.state.colorlist.map((item,index) => 
+                <div className={"color-picker"} key={index}>
+                  <input type="radio" name="color" checked ={this.props.currentColor == item[hue] ? "checked":null } id={item[hue]} onClick={(e)=>this.props.setColor(item[hue])}/>
+                  <label htmlFor={item[hue]}><div className="fill" style={{"background":item[hue]}}></div></label>
+                </div>                   
+              )
+          }
+          </div>
       );
     }
   }

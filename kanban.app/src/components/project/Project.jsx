@@ -70,7 +70,7 @@ class Project extends Component {
     render() {
 
         //MOC:some default bays to start with
-        const lstBay =  [{bayId:"bay1",bayTitle:"To Do"},{bayId:"bay2",bayTitle:"Doing"},{bayId:"bay3",bayTitle:"Done"}]
+        const lstBay =  [{bayId:"bay1",bayTitle:"To Do",bayRef:undefined},{bayId:"bay2",bayTitle:"Doing",bayRef:undefined},{bayId:"bay3",bayTitle:"Done",bayRef:undefined}]
        
         
         return ( 

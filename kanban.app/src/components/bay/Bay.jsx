@@ -39,13 +39,15 @@ class Bay extends Component{
             postitToDelete:""
         }
 
-            this.handleChildPostitDragStart = this.handleChildPostitDragStart.bind(this);
+
             this.handleDeletePostit= this.handleDeletePostit.bind(this);
+            this.handlePostitDataChange = this.handlePostitDataChange.bind(this);
    }
 
    startPostitStructure(){
         const postit = {
-                  title:"New Task"
+                  id: this.getNewID()
+                , title:"New Task"
                 , content:"write details here"
                 , hasBlockingIssue:false
                 , showEditPostit:true
@@ -115,45 +117,49 @@ class Bay extends Component{
         //TODO:Filter types
         e.preventDefault();
     }
-
     handleDrop(e){
+       
         let postit = JSON.parse(e.dataTransfer.getData('text/plain'));
-        console.log(postit);
+       
         //if the source bay id isn't the current, add the post it
+        if(postit.sourcebay !== this.props.bayId){
 
             let newlst = this.state.lstPostit.slice(0); 
             newlst.push(postit);
             this.setState((prevState,props) =>({
                 lstPostit: newlst
             }))
+
+            //TODO: impliment delete
+            this.props.deleteBayRemains(postit);
+        }
         
     }
-    handleDragEnd(e){
-
-            let newArr = this.state.lstPostit.slice(0);
-            newArr.splice(e,1);
-          
-            this.setState((prevState,props) =>({
-                lstPostit: newArr
-            }))
+   
     
-    }
-    handleChildPostitDragStart(e){
-        this.setState({
-            postitToDelete:e
-        });
+   //Postit methods 
+    deleteMovedPostit(postit){
+        this.handleDeletePostit(postit.position);
     }
 
- //DragEvents  
- handleDeletePostit(e){
-    this.setState({
-        postitToDelete:e
-    });
-    //although its not meaningfull, its better for the sake of non repeating code 
-    this.handleDragEnd(e);
-}
+    handlePostitDataChange(poistitIndex,propertyName,propertyValue){
+            let tmpList = this.state.lstPostit.slice(0);
+            Reflect.set(tmpList[poistitIndex],propertyName,propertyValue);
+            this.setState({
+                lstPostit: tmpList
+            })
+    }
 
-handleAddPostIt(e){        
+    handleDeletePostit(e){
+        let newArr = this.state.lstPostit.slice(0);
+        newArr.splice(e,1);
+      
+        this.setState((prevState,props) =>({
+            lstPostit: newArr
+        }))
+    }
+
+    handleAddPostIt(e){        
         let newArr = this.state.lstPostit.slice(0); 
 
         newArr.push(this.startPostitStructure());
@@ -163,7 +169,23 @@ handleAddPostIt(e){
         }))
     }
 
+    buildPostit(postit,index){
+        return  <Postit 
+                    id={postit.id} 
+                    className={this.props.className}
+                    title={postit.title} 
+                    content={postit.content} 
+                    hasBlockingIssue={postit.hasBlockingIssue} 
+                    position={index} 
+                    sourcebay={this.props.bayId} 
+                    deletePostit={this.handleDeletePostit}
+                    showEditPostit={postit.showEditPostit} 
+                    style = {postit.style}
+                    onDataChange={this.handlePostitDataChange}
+                />
+    }
 
+//Postit methods
 
     render(){
 
@@ -173,75 +195,66 @@ handleAddPostIt(e){
                     onDragOver={(e)=>this.handleDragOver(e)}
                     onDragEnter={(e)=>this.handleDragEnter(e)}
                     onDrop={(e)=>this.handleDrop(e)}
-                    onDragEnd={(e)=>this.handleDragEnd(e)}>
-            <Typography  className={this.props.className + "-title " + "hidden" + !this.state.isEditTitleHidden  } onClick={(e)=>this.handleEditTitleClick(e)}> 
-                {this.state.baytitle}
+                 //   onDragEnd={(e)=>this.handleDragEnd(e)}
+            >
+                <Typography  className={this.props.className + "-title " + "hidden" + !this.state.isEditTitleHidden  } onClick={(e)=>this.handleEditTitleClick(e)}> 
+                    {this.state.baytitle}
+                   
+                </Typography>
                 <Divider className={this.props.className + "-divider"} />
-            </Typography>
-             <TextField
-                label="Set Bay Name"
-                className={this.props.className + "-fieldbayname " + " hidden" + this.state.isEditTitleHidden}
-                onChange={(e)=>this.handleTitleChange(e)}
-                onKeyPress={(e)=>this.handleTitleFinishChange(e)}
-                value={this.state.baytitle}
-            /> 
-            <Button variant="fab"
-                mini={true}
-                onClick={(e)=>this.handleEditTitleClick(e)}
-                className={this.props.className + "-editpostit " }
-            >
-            <ImageEdit/></Button>
-            <Button variant="fab"
-                 mini={true} 
-                 onClick={(e)=>this.handleAddPostIt(e)}
-                 className={this.props.className + "-addpostit " }
-            >
-            <ContentAdd/>
-            </Button>
-            <Button variant="fab"
-                mini={true}
-                onClick={(e)=>this.handleDeleteBay(e)}
-                className={this.props.className + "-deletepostit " }  
-            >
-            <ActionDelete/>
-            </Button>
+                <TextField
+                    label="Set Bay Name"
+                    className={this.props.className + "-fieldbayname " + " hidden" + this.state.isEditTitleHidden}
+                    onChange={(e)=>this.handleTitleChange(e)}
+                    onKeyPress={(e)=>this.handleTitleFinishChange(e)}
+                    value={this.state.baytitle}
+                /> 
+                <Button variant="fab"
+                    mini={true}
+                    onClick={(e)=>this.handleEditTitleClick(e)}
+                    className={this.props.className + "-editpostit " }
+                >
+                <ImageEdit/></Button>
+                <Button variant="fab"
+                    mini={true} 
+                    onClick={(e)=>this.handleAddPostIt(e)}
+                    className={this.props.className + "-addpostit " }
+                >
+                <ContentAdd/>
+                </Button>
+                <Button variant="fab"
+                    mini={true}
+                    onClick={(e)=>this.handleDeleteBay(e)}
+                    className={this.props.className + "-deletepostit " }  
+                >
+                <ActionDelete/>
+                </Button>
+                
+                <Dialog
+                        title={"Bay deletion!"}
+                        modal="true"
+                        open={this.state.showDeleteDialog}
+                        aria-labelledby="form-dialog-title"
+                >
+                <DialogTitle id="form-dialog-title">{"Are you sure you want to delete bay " + this.state.baytitle + " ?"}
+                </DialogTitle>
+
+                <DialogActions>
+                                <Button onClick={(e)=>this.handleDeleteClose(e)} color="primary">
+                                    Cancel
+                                </Button>
+                                <Button onClick={(e)=>this.handleDeleteConfirm(e)} color="secondary">
+                                    Delete
+                                </Button>
+                            </DialogActions>
+                </Dialog>
+
             
-            <Dialog
-                    title={"Bay deletion!"}
-                    modal="true"
-                    open={this.state.showDeleteDialog}
-                    aria-labelledby="form-dialog-title"
-            >
-            <DialogTitle id="form-dialog-title">{"Are you sure you want to delete bay " + this.state.baytitle + " ?"}
-            </DialogTitle>
-
-             <DialogActions>
-                            <Button onClick={(e)=>this.handleDeleteClose(e)} color="primary">
-                                 Cancel
-                            </Button>
-                            <Button onClick={(e)=>this.handleDeleteConfirm(e)} color="secondary">
-                                 Delete
-                            </Button>
-                        </DialogActions>
-            </Dialog>
-
-           
-            <div className={this.props.className + "-postits"}>
-              {this.state.lstPostit.map((postit,index) =>        
-                    <Postit 
-                            id={this.getNewID()} 
-                            className={this.props.className}
-                            title={postit.title} 
-                            content={postit.content} 
-                            hasBlockingIssue={postit.hasBlockingIssue} 
-                            position={index} 
-                            sourcebay={this.props.bayId} 
-                            setLeavingPostit={this.handleChildPostitDragStart}
-                            deletePostit={this.handleDeletePostit}
-                            showEditPostit={postit.showEditPostit} 
-                            style = {postit.style}/>
-              )}
-              </div>
+                <div className={this.props.className + "-postits"}>
+                {this.state.lstPostit.map((postit,index) =>        
+                    this.buildPostit(postit,index)
+                )}
+                </div>
             </Paper>
              );
     }

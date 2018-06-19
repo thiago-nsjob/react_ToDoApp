@@ -29,6 +29,7 @@ import ColorPicker from '../colorPicker/ColorPicker';
 import postit from "./img/postit.svg"
 
 
+//Change all post it state to bay throw ref.
 
 class Postit extends Component{
     constructor(props){
@@ -48,13 +49,23 @@ class Postit extends Component{
     }
 
     getJsonData(){
-        let thisJson="";
-        thisJson = this.state;
-        return JSON.stringify(thisJson);
+
+        return JSON.stringify({
+            id: this.props.id,
+            title: this.props.title,
+            content: this.props.content,
+            hasBlockingIssue: this.props.hasBlockingIssue,
+            position:this.props.position,
+            style:this.props.style, 
+            expanded:false,
+            showEditPostit: false,
+            showDeletePostitDialog:false,
+            sourcebay:this.props.sourcebay
+        });
     }
 
     handleOnDragStart(e){
-        this.props.setLeavingPostit(this.state.position);
+       /*  this.props.setLeavingPostit(this.state.position); */
         e.dataTransfer.effectAllowed="move";
         e.dataTransfer.setData('text/plain',this.getJsonData())
     }
@@ -71,20 +82,17 @@ class Postit extends Component{
     }
 
     handleDeletePostitConfirm(e){
-        this.props.deletePostit(this.props.position -1)
+        this.props.deletePostit(this.props.position)
     }
     /* state change */
     handleTitleChange(e){
-        this.setState({
-            title:e.target.value,
-        });
+        this.props.onDataChange(this.props.position,"title",e.target.value);
     }
 
     handleContentChange(e){
-        this.setState({
-             content:e.target.value,
-        });     
+        this.props.onDataChange(this.props.position,"content",e.target.value);
     }
+
     handleExpandClick (e) {
         this.setState({ expanded: !this.state.expanded });
       };
@@ -94,7 +102,8 @@ class Postit extends Component{
     }
 
     handleSetColor(colorId){
-        this.setState({ style: {background:colorId} });
+        this.props.onDataChange(this.props.position,"style",{background:colorId});
+        //this.setState({ style: {background:colorId} });
     }
     
     render(){
@@ -107,7 +116,7 @@ class Postit extends Component{
                 draggable="true"
                 >
             <Card  
-                style={this.state.style}
+                style={this.props.style}
                 className={this.props.className +"-postitcard"}>
                 <CardContent 
                  className={this.props.className +"-postitcontent"}>
@@ -118,7 +127,7 @@ class Postit extends Component{
                     />
                     <Typography 
                        className={this.props.className +"-postittitle"}>
-                        {this.state.title}
+                        {this.props.title}
                     </Typography>
 
                     <IconButton
@@ -134,7 +143,7 @@ class Postit extends Component{
                         <CardContent>
                         <Divider/>
                         <Typography>
-                            {this.state.content}
+                            {this.props.content}
                         </Typography>
                         </CardContent>
                     <CardActions>
@@ -165,17 +174,17 @@ class Postit extends Component{
                         label="Postit title"
                         className={this.props.className + "-txt-postit-title "}
                         onChange={(e)=>this.handleTitleChange(e)}
-                        value = {this.state.title}
+                        value = {this.props.title}
                     /> 
                      <TextField
                         label="Postit content"
                         multiline
                         className={this.props.className + "-txt-postit-content "}
                         onChange={(e)=>this.handleContentChange(e)}
-                        value = {this.state.content}
+                        value = {this.props.content}
                     /> 
                     <ColorPicker setColor={(e)=>this.handleSetColor(e)} 
-                                 currentColor={this.state.style.background } />
+                                 currentColor={this.props.style.background } />
                     <DialogActions>
                         <Button onClick={(e)=>this.handleEditClick(e)} color="primary">
                                 Close
