@@ -66,74 +66,80 @@ class Login extends Component{
                            
                             if (!isLogged())
                                 return <div className="login-root" >
-                                
-                                            <div className="kanbanlogo"> 
-                                                 <img src={logoimg} className="kanbanlogo-img"/>
-                                            </div>
-                                            <Paper className="login-controls">
-                                            
-                                                <Paper className="login-controls-welcome">
-                                                    <span><br/>Credentials please!</span>
-                                                </Paper>
-                                                <form onSubmit={(e)=>this.handleSubmit(e,username.value,password.value,handleSignIn)}>
-                                                        <div className="login-controls-fields">
-                                                            
-                                                                <TextField
-                                                                    inputRef={val=>username= val}
-                                                                    required
-                                                                    label="User Name"
-                                                                    className="login-controls-username"
-                                                                    margin="normal"
-                                                                    inputProps={{ pattern: this.usernameValidationPattern  }}
-                                                                />
-
-                                                                <TextField
-                                                                    inputRef={val=>password = val}
-                                                                    required
-                                                                    label="Password"
-                                                                    className="login-controls-password"
-                                                                    type="password"
-                                                                    margin="normal"
-                                                                    inputProps={{ pattern: this.passwordValidationPattern }}
-                                                                />
-                                                        
-                                                        </div>
-                                                        <div className="login-controls-actions"> 
-                                                            <Button variant="raised"
-                                                                    className="login-controls-actions-signin"
-                                                                    type="submit"
-                                                                    value="Submit"
-                                                            > 
-                                                                Sign In 
-                                                            </Button>
-                                                            <Button 
-                                                                variant="raised" 
-                                                                className="login-controls-actions-signup"
-                                                                onClick={(e)=>this.props.history.push('/')}
-                                                            > 
-                                                                Sign Up 
-                                                            </Button>
-                                                            
-                                                        </div>
-                                                    </form>
-                                                </Paper> 
-                                                <div className="snackMessage" >
-                                                    <Snackbar
-                                                            onClose={(e)=>this.handleCloseSnackBar(e)}
-                                                            autoHideDuration={10000}
-                                                            open={this.state.showErrorMsg}
-                                                            message={this.state.errorMsg}    
-                                                            action={
-                                                                <Button
-                                                                    size="small" 
-                                                                    variant="outlined"
-                                                                    onClick={(e)=>this.handleCloseSnackBar(e)}>
-                                                                        Ok
-                                                                </Button> 
-                                                            }
-                                                        />
+                                            <div className="rowlogo">
+                                                <div className="kanbanlogo"> 
+                                                    <img src={logoimg} className="kanbanlogo-img"/>
                                                 </div>
+
+                                                <div className="rowcontrols">
+                                                    <Paper className="login-controls">
+                                                    
+                                                        <Paper className="login-controls-welcome">
+                                                            <span><br/>Credentials please!</span>
+                                                        </Paper>
+                                                        <form onSubmit={(e)=>this.handleSubmit(e,username.value,password.value,handleSignIn)}>
+                                                                <div className="login-controls-fields">
+                                                                    
+                                                                        <TextField
+                                                                            inputRef={val=>username= val}
+                                                                            required
+                                                                            label="User Name"
+                                                                            className="login-controls-username"
+                                                                            margin="normal"
+                                                                            inputProps={{ pattern: this.usernameValidationPattern  }}
+                                                                        />
+
+                                                                        <TextField
+                                                                            inputRef={val=>password = val}
+                                                                            required
+                                                                            label="Password"
+                                                                            className="login-controls-password"
+                                                                            type="password"
+                                                                            margin="normal"
+                                                                            inputProps={{ pattern: this.passwordValidationPattern }}
+                                                                        />
+                                                                
+                                                                </div>
+                                                                <div className="login-controls-actions"> 
+                                                                    <Button variant="raised"
+                                                                            className="login-controls-actions-signin"
+                                                                            type="submit"
+                                                                            value="Submit"
+                                                                    > 
+                                                                        Sign In 
+                                                                    </Button>
+                                                                    <Button 
+                                                                        variant="raised" 
+                                                                        className="login-controls-actions-signup"
+                                                                        onClick={(e)=>this.props.history.push('/')}
+                                                                    > 
+                                                                        Sign Up 
+                                                                    </Button>
+                                                                    
+                                                                </div>
+                                                            </form>
+                                                    </Paper> 
+                                                        <div className="snackMessage" >
+                                                            <Snackbar
+                                                                    onClose={(e)=>this.handleCloseSnackBar(e)}
+                                                                    autoHideDuration={10000}
+                                                                    open={this.state.showErrorMsg}
+                                                                    message={this.state.errorMsg}    
+                                                                    action={
+                                                                        <Button
+                                                                            size="small" 
+                                                                            variant="outlined"
+                                                                            onClick={(e)=>this.handleCloseSnackBar(e)}>
+                                                                                Ok
+                                                                        </Button> 
+                                                                    }
+                                                                />
+                                                        </div>
+                                           
+                                                </div>
+
                                             </div>
+                                        </div>
                                        
                                             
                            else 
