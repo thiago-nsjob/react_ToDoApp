@@ -4,6 +4,7 @@ import {TextField,Button,Paper,FormControl,InputLabel,Input,SvgIcon,Snackbar} fr
 import {withStyles, MuiThemeProvider, createMuiTheme} from '@material-ui/core/styles/MuiThemeProvider';
 import { purple,blue,yellow,grey, red, indigo, green,amber,lime,cyan  } from "@material-ui/core/colors";
 import {AuthContext,AuthContextConsumer} from '../login/AuthContext';
+import * as Validator from '../common/common';
 import Dialog from '@material-ui/core/Dialog';
 import DialogTitle from '@material-ui/core/DialogTitle';
 import DialogActions from '@material-ui/core/DialogActions';
@@ -28,14 +29,6 @@ class Login extends Component{
         this.handleLoginError = this.handleLoginError.bind(this);
     }
 
-     get usernameValidationPattern() {
-         //http://regexlib.com/REDetails.aspx?regexp_id=186
-        return "^([1-zA-Z0-1@.\s]{1,255})$";
-     } 
-     get passwordValidationPattern() {
-         //http://regexlib.com/REDetails.aspx?regexp_id=887
-        return "(?=^.{6,255}$)((?=.*\d)(?=.*[A-Z])(?=.*[a-z])|(?=.*\d)(?=.*[^A-Za-z0-9])(?=.*[a-z])|(?=.*[^A-Za-z0-9])(?=.*[A-Z])(?=.*[a-z])|(?=.*\d)(?=.*[A-Z])(?=.*[^A-Za-z0-9]))^.*";
-     } 
 
     handleLoginError(err){
         this.setState((prevState,props)=>({
@@ -86,7 +79,7 @@ class Login extends Component{
                                                                             label="User Name"
                                                                             className="login-controls-username"
                                                                             margin="normal"
-                                                                            inputProps={{ pattern: this.usernameValidationPattern  }}
+                                                                            inputProps={{ pattern: Validator.usernameValidationPattern  }}
                                                                         />
 
                                                                         <TextField
@@ -96,7 +89,7 @@ class Login extends Component{
                                                                             className="login-controls-password"
                                                                             type="password"
                                                                             margin="normal"
-                                                                            inputProps={{ pattern: this.passwordValidationPattern }}
+                                                                            inputProps={{ pattern: Validator.passwordValidationPattern }}
                                                                         />
                                                                 
                                                                 </div>
@@ -111,7 +104,7 @@ class Login extends Component{
                                                                     <Button 
                                                                         variant="raised" 
                                                                         className="login-controls-actions-signup"
-                                                                        onClick={(e)=>this.props.history.push('/')}
+                                                                        onClick={(e)=>this.props.history.push('/signup')}
                                                                     > 
                                                                         Sign Up 
                                                                     </Button>

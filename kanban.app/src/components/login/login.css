@@ -50,6 +50,7 @@
 }
 
 .login-controls-fields{
+    padding-left: 1em;
     flex: 2 1 auto!important;
     margin-left: 3em
 }

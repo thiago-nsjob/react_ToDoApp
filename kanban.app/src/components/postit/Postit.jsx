@@ -26,7 +26,7 @@ import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import {darkBlack} from '@material-ui/core/colors';
 import "./Postit.css";
 import ColorPicker from '../colorPicker/ColorPicker';
-import postit from "./img/postit.svg"
+
 
 
 //Change all post it state to bay throw ref.
