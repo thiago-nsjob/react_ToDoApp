@@ -8,14 +8,15 @@
     width: auto;
 }
 
-.signup-kanbanlogo{
-    
+.signup-kanbanlogo{ 
+    margin-top: 4em;
     flex:1 1 auto;
 }
 .signup-controls{
     flex:1 1 auto;
     margin: 2em;
-    height: 36em;
+    margin-top: 4em;
+    height: 37em;
     width: 20em !important;
     display: flex;
     justify-content: center;
@@ -26,6 +27,8 @@
     margin: 2em;
    
 }
+
+
 .signup-controls-actions{
     flex:1 1 auto;
 }
@@ -65,4 +68,21 @@
     background: linear-gradient(195deg, rgba(198,66,123,1) 0%, rgba(117,23,199,1) 100%)!important;
     color:white!important;
     font-weight: bold!important;
+}
+
+.signup-snackbar-okbutton{
+    background: linear-gradient(195deg, rgba(198,66,123,1) 0%, rgba(117,23,199,1) 100%)!important;
+    color:white!important;
+    font-weight: bold!important;
+}
+
+
+span.displayError-true{
+    display: inline;
+    color:red;
+    font-size: 8pt;
+}
+
+span.displayError-false{
+    display: none;
 }

@@ -115,7 +115,7 @@ class Login extends Component{
                                                         <div className="snackMessage" >
                                                             <Snackbar
                                                                     onClose={(e)=>this.handleCloseSnackBar(e)}
-                                                                    autoHideDuration={10000}
+                                                                    autoHideDuration={30000}
                                                                     open={this.state.showErrorMsg}
                                                                     message={this.state.errorMsg}    
                                                                     action={
