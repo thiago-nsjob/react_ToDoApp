@@ -3,11 +3,18 @@
           
 */
 const path = require('path');
+const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
+const UglifyJsPlugin = require('uglifyjs-webpack-plugin')
 
 
 module.exports = {
+  optimization: {
+    minimizer: [
+      new UglifyJsPlugin()
+    ]},
+  devtool: 'inline-source-map',
   entry: './src/index.js',
   output: {
     path: path.resolve('./dist'),
@@ -22,7 +29,14 @@ module.exports = {
         /*copy all the static files*/
         new CopyWebpackPlugin([
           { from: 'src/static', to: 'static', toType: 'dir',force:true,debug:'debug'}
-        ])
+        ]),
+        new webpack.DefinePlugin({
+          'process.env': {
+            // This tells the Webpack and Babel for optimization for performance
+            NODE_ENV: JSON.stringify('production')
+          }
+        }),
+       
       ],
   devServer: {
     contentBase: "./dist",
