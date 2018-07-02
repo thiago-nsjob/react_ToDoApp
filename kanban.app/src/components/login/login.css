@@ -10,19 +10,18 @@
 }
 
 .kanbanlogo{
-    max-width: 40em;
+    margin-top: 10em!important;
     margin:1vw; 
     flex:1 1 auto;
-    margin:5em;
+    
 }
 .kanbanlogo-img{
-    margin-left: 5em;
+   
 }
 
 .rowcontrols{
     margin-left:1vw; 
     flex:1 2 auto;
-    margin: 20vh;
     width: 20em;
 }
 

@@ -6,9 +6,9 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "prod": "NODE_ENV=production node server.js",
-    "build": "webpack --config webpack.config.js -p --progress --colors",
+    "build": "webpack --config webpack.prod.config.js -p --progress --colors",
     "postinstall": "webpack -p",
-    "start": "webpack && webpack-dev-server -d --config webpack.config.js --progress --colors  --hot --inline"
+    "start": "webpack --config webpack.dev.config.js && webpack-dev-server -d --config webpack.dev.config.js --port 3001  --hot --inline"
   },
   "author": "",
   "license": "ISC",

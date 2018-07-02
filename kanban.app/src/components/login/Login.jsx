@@ -64,7 +64,7 @@ class Login extends Component{
 
                                                 <div className="rowcontrols">
                                                     <Paper className="login-controls">
-                                                    
+                                                       
                                                         <Paper className="login-controls-welcome">
                                                             <span><br/>Credentials please!</span>
                                                         </Paper>
@@ -93,6 +93,7 @@ class Login extends Component{
                                                                                     inputProps={{ pattern: Validator.passwordValidationPattern }}
                                                                                 />
                                                                         </Tooltip>
+                                                                        
                                                                 </div>
                                                                 <div className="login-controls-actions"> 
                                                                     <Button variant="raised"
