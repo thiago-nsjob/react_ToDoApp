@@ -1,9 +1,7 @@
 import React,{Component} from 'react';
 
-import {TextField,Button,Paper,FormControl,InputLabel,Input,SvgIcon,Snackbar} from '@material-ui/core';
-import {withStyles, MuiThemeProvider, createMuiTheme} from '@material-ui/core/styles/MuiThemeProvider';
-import { purple,blue,yellow,grey, red, indigo, green,amber,lime,cyan  } from "@material-ui/core/colors";
-import {AuthContext,AuthContextConsumer} from '../login/AuthContext';
+import {TextField,Button,Paper,Snackbar,Tooltip} from '@material-ui/core';
+import {AuthContextConsumer} from '../login/AuthContext';
 import * as Validator from '../common/common';
 import Dialog from '@material-ui/core/Dialog';
 import DialogTitle from '@material-ui/core/DialogTitle';
@@ -44,9 +42,9 @@ class Login extends Component{
     }
 
     handleSubmit(e,username,password,signInMethod){
-
+        e.preventDefault();
         signInMethod(username,password)
-            .then(this.forceUpdate()).then(console.log("okdok"))
+            .then(this.forceUpdate())
             .catch((err)=>this.handleLoginError(err))
     }
 
@@ -72,26 +70,29 @@ class Login extends Component{
                                                         </Paper>
                                                         <form onSubmit={(e)=>this.handleSubmit(e,username.value,password.value,handleSignIn)}>
                                                                 <div className="login-controls-fields">
-                                                                    
-                                                                        <TextField
-                                                                            inputRef={val=>username= val}
-                                                                            required
-                                                                            label="User Name"
-                                                                            className="login-controls-username"
-                                                                            margin="normal"
-                                                                            inputProps={{ pattern: Validator.usernameValidationPattern  }}
-                                                                        />
-
-                                                                        <TextField
-                                                                            inputRef={val=>password = val}
-                                                                            required
-                                                                            label="Password"
-                                                                            className="login-controls-password"
-                                                                            type="password"
-                                                                            margin="normal"
-                                                                            inputProps={{ pattern: Validator.passwordValidationPattern }}
-                                                                        />
-                                                                
+                                                                        <Tooltip title="User Name must have at least 6 characters"  placement="left-start">
+                                                                            <TextField
+                                                                                inputRef={val=>username= val}
+                                                                                required
+                                                                                label="User Name"
+                                                                                className="login-controls-username"
+                                                                                margin="normal"
+                                                                                inputProps={{ pattern: Validator.usernameValidationPattern  }}
+                                                                            />
+                                                                         </Tooltip>
+                                                                        <Tooltip title="Password must have at least 1 upper case,
+                                                                                        1 lower case, 1 numerical 
+                                                                                        and 1 special character"  placement="left-start">                                                                
+                                                                                <TextField
+                                                                                    inputRef={val=>password = val}
+                                                                                    required
+                                                                                    label="Password"
+                                                                                    className="login-controls-password"
+                                                                                    type="password"
+                                                                                    margin="normal"
+                                                                                    inputProps={{ pattern: Validator.passwordValidationPattern }}
+                                                                                />
+                                                                        </Tooltip>
                                                                 </div>
                                                                 <div className="login-controls-actions"> 
                                                                     <Button variant="raised"
@@ -115,14 +116,16 @@ class Login extends Component{
                                                         <div className="snackMessage" >
                                                             <Snackbar
                                                                     onClose={(e)=>this.handleCloseSnackBar(e)}
-                                                                    autoHideDuration={30000}
+                                                                    autoHideDuration={10000}
                                                                     open={this.state.showErrorMsg}
-                                                                    message={this.state.errorMsg}    
+                                                                    message={this.state.errorMsg}   
                                                                     action={
                                                                         <Button
+                                                                            className="login-controls-snackbarok" 
                                                                             size="small" 
                                                                             variant="outlined"
-                                                                            onClick={(e)=>this.handleCloseSnackBar(e)}>
+                                                                            onClick={(e)=>this.handleCloseSnackBar(e)}
+                                                                           >
                                                                                 Ok
                                                                         </Button> 
                                                                     }
@@ -142,7 +145,7 @@ class Login extends Component{
                                             open={true}
                                             aria-labelledby="form-dialog-title"
                                     >
-                                    <DialogTitle id="form-dialog-title">{`Welcome back ${getUserInfo()} !`}
+                                    <DialogTitle id="form-dialog-title">{`Welcome ${getUserInfo()} !`}
                                     </DialogTitle>
                                     <DialogActions>
                                                     <Button onClick={(e)=>this.props.history.push("/")} color="primary">

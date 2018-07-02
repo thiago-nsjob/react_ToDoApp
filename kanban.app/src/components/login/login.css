@@ -27,7 +27,7 @@
 }
 
 .login-controls{
-    height: 20em;
+    height: 22em;
     background: 	#563672!important;
     display:flex !important;
     justify-content: center !important;
@@ -106,4 +106,10 @@ div.login-controls-password  input{
     position: absolute;
     bottom:5vh;
     
+}
+
+.login-controls-snackbarok{
+    background: linear-gradient(195deg, rgba(198,66,123,1) 0%, rgba(117,23,199,1) 100%)!important;
+    color:white!important;
+    font-weight: bold;
 }

@@ -22,8 +22,8 @@ class AuthContext extends React.Component{
     handleSignIn(user, pass){
       return new Promise(
             function(resolve,reject){
-                if(user == "thiago"){
-                    sessionStorage.setItem("userlogged",user)
+                if(user == sessionStorage.getItem("userlogged")){
+                    sessionStorage.setItem("islogged",true)
                     console.log(`log in as ${sessionStorage.getItem("userlogged")}`);
                     resolve(200);
                 }
@@ -40,7 +40,7 @@ class AuthContext extends React.Component{
         return new Promise(
               function(resolve,reject){
                   try{
-                    sessionStorage.removeItem("userlogged")
+                    sessionStorage.removeItem("islogged")
                     console.log(`Logged out!`);
                     resolve(200);
 
@@ -57,7 +57,7 @@ class AuthContext extends React.Component{
 
     isLogged()
     {
-        return sessionStorage.getItem("userlogged")
+        return sessionStorage.getItem("islogged")
     }
 
     getUserInfo()

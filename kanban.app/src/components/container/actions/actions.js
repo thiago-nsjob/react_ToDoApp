@@ -3,6 +3,7 @@ export const CHANGE_INFO = 'CHANGE_INFO';
 export const SET_ERROR = 'SET_ERROR';
 export const SHOW_ERROR = 'SHOW_ERROR';
 
+
 export const signUp =(userInfo)=>{
 
     return {

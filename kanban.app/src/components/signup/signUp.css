@@ -9,14 +9,14 @@
 }
 
 .signup-kanbanlogo{ 
-    margin-top: 4em;
+    margin-top: 3em;
     flex:1 1 auto;
 }
 .signup-controls{
     flex:1 1 auto;
     margin: 2em;
-    margin-top: 4em;
-    height: 37em;
+    margin-top: 2em;
+    height: 42em;
     width: 20em !important;
     display: flex;
     justify-content: center;

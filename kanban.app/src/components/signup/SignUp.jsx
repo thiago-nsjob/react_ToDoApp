@@ -1,8 +1,8 @@
 import React,{Component} from "react";
 import {bindActionCreators} from 'redux';
 import { connect } from 'react-redux'
-import {TextField,Button,Paper,Divider,Avatar,Snackbar} from '@material-ui/core';
-import { Redirect } from 'react-router-dom';
+import {TextField,Button,Paper,Divider,Avatar,Snackbar,Dialog,DialogTitle,DialogActions,Tooltip} from '@material-ui/core';
+
 
 import ImageIcon from '@material-ui/icons/Image';
 import ErrorIcon from '@material-ui/icons/Error';
@@ -22,15 +22,20 @@ class SignUp extends Component{
         this.photo = React.createRef();
         this.state = {
             currentPhoto:defaultProfileImg,
+            isNameValid:true,
             isUserNameValid:true,
             isPasswordValid:true,
             isPasswordConfirmationValid:true,
+            showSuccess:false
         }
         this.validForm = this.validForm.bind(this);
     }
 
     validForm(){
-       return this.state.isUserNameValid && this.state.isPasswordValid && this.state.isPasswordConfirmationValid
+       return ( this.state.isNameValid &&
+                this.state.isUserNameValid && 
+                this.state.isPasswordValid && 
+                this.state.isPasswordConfirmationValid)
     }
 
     validateField(prop){
@@ -41,13 +46,19 @@ class SignUp extends Component{
         e.preventDefault();
 
         //If everything is cool, call the signup api
-        if(this.validForm())
+        if(this.validForm()){
             //to API call to add user
             //go back to login
             this.props.actions.signUp();
-        else
-            this.props.actions.setError("Some fields have invalida information. Please review the infomation provided.");
-            this.props.actions.showError();
+
+            if(!this.props.user.userId){
+              
+                    this.props.actions.setError("Some fields have invalida information. Please review the infomation provided.");
+                    this.props.actions.showError();
+            }   
+        
+        }
+        
     }
     loadThumb(){
         
@@ -80,28 +91,53 @@ class SignUp extends Component{
                               
                                    <div className="row">
                                        <div className="signup-controls-fields">
-                                           <TextField
-                                                required
-                                                label="User Name"
-                                                className="signup-controls-username"
-                                                margin="normal"        
-                                                inputProps={{ pattern: Helper.usernameValidationPattern  }}
-                                                onChange={(e)=>{this.props.actions.changeUserInfo(e.target.value,"name")}}
-                                                onBlur={(e)=>this.validateField({"isUserNameValid":e.target.checkValidity()})}
+                                            <Tooltip title="Name must have at least 6 characters"  placement="left-start">
+                                                    <TextField
+                                                            required
+                                                            label="Name"
+                                                            className="signup-controls-username"
+                                                            margin="normal"        
+                                                            inputProps={{ pattern: Helper.usernameValidationPattern  }}
+                                                            onChange={(e)=>{
+                                                                            this.props.actions.changeUserInfo(e.target.value,"name");
+                                                                            this.validateField({"isNameValid":e.target.checkValidity()})
+                                                                            }
+                                                                    }
 
-                                           />
+                                                    />
+                                            </Tooltip>
+                                            <span className={`displayError-${!this.state.isNameValid}`}><ErrorIcon/> </span>
+                                                
+                                            <Tooltip title="User Name must have at least 6 characters"  placement="left-start">
+                                                <TextField
+                                                        required
+                                                        label="User Name"
+                                                        className="signup-controls-username"
+                                                        margin="normal"        
+                                                        inputProps={{ pattern: Helper.usernameValidationPattern  }}
+                                                        onChange={(e)=>{
+                                                                        this.props.actions.changeUserInfo(e.target.value,"userName");
+                                                                        this.validateField({"isUserNameValid":e.target.checkValidity()})
+                                                                        }
+                                                                }
+                                                />
+                                           </Tooltip>
                                             <span className={`displayError-${!this.state.isUserNameValid}`}><ErrorIcon/> </span>
-                                           
-                                           <TextField
-                                               required
-                                               type="password"
-                                               label="Passord"
-                                               className="signup-controls-password"
-                                               margin="normal"
-                                               inputProps={{ pattern: Helper.passwordValidationPattern  }}
-                                               onBlur={(e)=>this.validateField({"isPasswordValid":e.target.checkValidity()})}
-                                               onChange={(e)=>this.props.actions.changeUserInfo(e.target.value,"password")}
-                                           />
+                                            
+                                           <Tooltip title="Password must have at least 1 upper case, 1 lower case, 1 numerical and 1 special character"  placement="left-start">                                                                
+                                                <TextField
+                                                required
+                                                type="password"
+                                                label="Passord"
+                                                className="signup-controls-password"
+                                                margin="normal"
+                                                inputProps={{ pattern: Helper.passwordValidationPattern  }}
+                                                
+                                                onChange={(e)=>{this.props.actions.changeUserInfo(e.target.value,"password")
+                                                                this.validateField({"isPasswordValid":e.target.checkValidity()})
+                                                }}
+                                            />
+                                            </Tooltip>
                                             <span className={`displayError-${!this.state.isPasswordValid}`}><ErrorIcon/> </span>
                                            <TextField
                                                required
@@ -110,8 +146,10 @@ class SignUp extends Component{
                                                className="signup-controls-password"
                                                margin="normal"
                                                inputProps={{ pattern: Helper.passwordValidationPattern  }}
-                                               onBlur={(e)=>this.validateField({"isPasswordConfirmationValid":e.target.checkValidity()})}
-                                               onChange={(e)=>this.props.actions.changeUserInfo(e.target.value,"confirmPassword")}
+                                               
+                                               onChange={(e)=>{this.props.actions.changeUserInfo(e.target.value,"confirmPassword")
+                                                             this.validateField({"isPasswordConfirmationValid":e.target.checkValidity()})
+                                               }}
                                            />
                                             <span className={`displayError-${!this.state.isPasswordConfirmationValid}`}><ErrorIcon/> </span>
                                          
@@ -153,7 +191,8 @@ class SignUp extends Component{
                                 
                            </div>
                        </form>
-                       <div className="snackMessage" >
+                      
+                                <div className="snackMessage" >
                                     <Snackbar
                                             autoHideDuration={100000}
                                             open={this.props.user.showError}
@@ -171,13 +210,24 @@ class SignUp extends Component{
                                 </div>
                </div>
    }
-
     render(){
-            //If there is user id   
-            if(this.props.user.userId !=="")
-                return <Redirect to="/login"/>;
+            if(!this.props.user.userId)
+                return this.buildSignup();
             else
-              return this.buildSignup();
+                return<Dialog
+                                title={`All good! `}
+                                modal="true"
+                                open={true}
+                                aria-labelledby="form-dialog-title"
+                        >
+                        <DialogTitle id="form-dialog-title">{`Thanks for signing up ${this.props.user.name} !`}
+                        </DialogTitle>
+                        <DialogActions>
+                                        <Button onClick={(e)=>this.props.history.push("/login")} color="primary">
+                                            OK
+                                        </Button>
+                                    </DialogActions>
+                        </Dialog>
       
     }
 }
