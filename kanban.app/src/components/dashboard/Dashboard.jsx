@@ -30,7 +30,7 @@ class Dashboard extends Component{
 
     hanldeManageProject(e){
         console.log(e);
-        this.props.history.push(`/project/${e}`)
+        this.props.history.push(`/project/${this.state.projectList[e].projectTitle}`)
     }
 
     handleTitleClick(){

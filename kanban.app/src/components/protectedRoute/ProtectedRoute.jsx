@@ -18,12 +18,14 @@ class ProtectedRoute extends React.Component{
                     {
                         (args)=>(
                             //Had to pass the parent props manually to the route once expanding this.props causes conflict between render and the component prop 
-                            <Route path={this.props.path} history={this.props.history} match={this.props.match}  render={props=>(args.isLogged()?<Component {...props}  /> :<Redirect to="/login" />)} />
+                            //Also, I have adjusted the route to pass all url parms as component props for its render component.
+                            <Route path={this.props.path} history={this.props.history} match={this.props.match}  render={props=>(args.isLogged()?<Component {...props} {...props.match.params}  /> :<Redirect to="/login" />)} />
                         )   
                     }
                 </AuthContextConsumer>    
         )
     }
+
 }
 export default ProtectedRoute;
 
