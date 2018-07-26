@@ -68,7 +68,7 @@ class SignUp extends Component{
 
         reader.onloadend = ()=> {
             console.log("done");
-            this.props.actions.changeUserInfo(reader.result,"userThumbs");
+            sessionStorage.setItem(`rkanban-user-thumb`,reader.result);
             component.setState(
                 {
                     currentPhoto:reader.result

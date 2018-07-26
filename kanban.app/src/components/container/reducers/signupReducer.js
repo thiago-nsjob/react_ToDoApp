@@ -7,7 +7,7 @@ const initialState =  {
     userName:"",
     password:"",
     confirmPassword:"",
-    userThumb:"",
+    
     errorMsg:"",
     showError:false,
 }
@@ -27,8 +27,6 @@ export default (state = initialState,action) =>{
             //TODO: add api call to post the user
             try{
                     sessionStorage.setItem(`rkanban-user`,state.userName);
-                    sessionStorage.setItem(`rkanban-user-lastlogin`,new Date());
-                    sessionStorage.setItem(`rkanban-user-thumb`,state.userThumb);
                     console.log(state.userThumb);
                     return {...state,userId:`${state.userName}okdok`};
             }    

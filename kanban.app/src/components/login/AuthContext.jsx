@@ -24,7 +24,7 @@ class AuthContext extends React.Component{
             function(resolve,reject){
                 console.log(`user informed ${user}`);
                 console.log(`session storage${sessionStorage.getItem("rkanban-user")}`)
-                if(user == sessionStorage.getItem("rkanban-user")){
+                if(user == sessionStorage.getItem("rkanban-user") ){
                     sessionStorage.setItem(`rkanban-user-lastlogin`,new Date());
                     console.log(`log in as ${sessionStorage.getItem("userlogged")}`);
                     resolve(200);
