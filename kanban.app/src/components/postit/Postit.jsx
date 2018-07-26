@@ -26,6 +26,7 @@ import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import {darkBlack} from '@material-ui/core/colors';
 import "./Postit.css";
 import ColorPicker from '../colorPicker/ColorPicker';
+import defaultThumb from  "../../static/smiling.svg"; 
 
 
 
@@ -107,7 +108,12 @@ class Postit extends Component{
     }
     
     render(){
+        let thumb ="";
 
+        if(sessionStorage.getItem(`rkanban-user-thumb`)) 
+            thumb = sessionStorage.getItem(`rkanban-user-thumb`)
+        else 
+            thumb = defaultThumb;
         
         return(
            <div id={this.props.id} 
@@ -122,7 +128,7 @@ class Postit extends Component{
                  className={this.props.className +"-postitcontent"}>
                     <Avatar
                         alt="Thiago Silva"
-                        src="https://media.licdn.com/dms/image/C5603AQFq7AGnVzHR6A/profile-displayphoto-shrink_200_200/0?e=1533772800&v=beta&t=S6POQIPosT0Ht93QwLjl0O5B9TrInKmlFlt4wuPSYX8"
+                        src={thumb}
                         className={this.props.className +"-avatar"}
                     />
                     <Typography 
