@@ -85,7 +85,7 @@ class Project extends Component {
                             <Close />
                         </IconButton>
                         <Typography variant="title" color="inherit" className="project-menu-root-title">
-                            {this.props.projectTitle}
+                            {this.props.projectName}
                         </Typography>
                         <Button 
                             className={"project-menu-newbay"}
@@ -117,7 +117,7 @@ class Project extends Component {
                                             open={this.state.showExitDialog}
                                             aria-labelledby="form-dialog-title"
                                     >
-                                    <DialogTitle id="form-dialog-title">{`Are you sure you want to exit project ${this.state.projectTitle} ?`}
+                                    <DialogTitle id="form-dialog-title">{`Are you sure you want to exit project ${this.state.projectName} ?`}
                                     </DialogTitle>
                                     <DialogActions>
                                                     <Button onClick={(e)=>this.props.history.push("/")} color="primary">

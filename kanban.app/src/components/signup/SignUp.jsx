@@ -68,6 +68,7 @@ class SignUp extends Component{
 
         reader.onloadend = ()=> {
             console.log("done");
+            this.props.actions.changeUserInfo(reader.result,"userThumbs");
             component.setState(
                 {
                     currentPhoto:reader.result
@@ -134,7 +135,7 @@ class SignUp extends Component{
                                                 inputProps={{ pattern: Helper.passwordValidationPattern  }}
                                                 
                                                 onChange={(e)=>{this.props.actions.changeUserInfo(e.target.value,"password")
-                                                                this.validateField({"isPasswordValid":e.target.checkValidity()})
+                                                                //this.validateField({"isPasswordValid":e.target.checkValidity()})
                                                 }}
                                             />
                                             </Tooltip>
@@ -148,7 +149,7 @@ class SignUp extends Component{
                                                inputProps={{ pattern: Helper.passwordValidationPattern  }}
                                                
                                                onChange={(e)=>{this.props.actions.changeUserInfo(e.target.value,"confirmPassword")
-                                                             this.validateField({"isPasswordConfirmationValid":e.target.checkValidity()})
+                                                             //this.validateField({"isPasswordConfirmationValid":e.target.checkValidity()})
                                                }}
                                            />
                                             <span className={`displayError-${!this.state.isPasswordConfirmationValid}`}><ErrorIcon/> </span>

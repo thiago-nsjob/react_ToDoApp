@@ -21,10 +21,10 @@ class App extends  Component{
                 <AuthContext >
                     <Switch>
                         <Route exact  path="/login" component={Login} />
-                        <Route exact path={`/signup`} component={SignUp} /> */}
+                        <Route exact path={`/signup`} component={SignUp} /> 
                         <ProtectedRoute exact path="/" component={Home}/>
                         <ProtectedRoute exact path="/home" component={Home}/>
-                        <ProtectedRoute exact path={`/project/:id`} component={Project} />
+                        <ProtectedRoute exact path={`/project/:projectName`} component={Project} projectTitle="teste" />
                         
                     </Switch>
                 </AuthContext>

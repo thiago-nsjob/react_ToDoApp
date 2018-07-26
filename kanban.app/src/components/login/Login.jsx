@@ -70,7 +70,7 @@ class Login extends Component{
                                                         </Paper>
                                                         <form onSubmit={(e)=>this.handleSubmit(e,username.value,password.value,handleSignIn)}>
                                                                 <div className="login-controls-fields">
-                                                                        <Tooltip title="User Name must have at least 6 characters"  placement="left-start">
+                                                                        <Tooltip title="At least 6 characters"  placement="left-start">
                                                                             <TextField
                                                                                 inputRef={val=>username= val}
                                                                                 required
@@ -80,9 +80,7 @@ class Login extends Component{
                                                                                 inputProps={{ pattern: Validator.usernameValidationPattern  }}
                                                                             />
                                                                          </Tooltip>
-                                                                        <Tooltip title="Password must have at least 1 upper case,
-                                                                                        1 lower case, 1 numerical 
-                                                                                        and 1 special character"  placement="left-start">                                                                
+                                                                                                                                
                                                                                 <TextField
                                                                                     inputRef={val=>password = val}
                                                                                     required
@@ -90,9 +88,9 @@ class Login extends Component{
                                                                                     className="login-controls-password"
                                                                                     type="password"
                                                                                     margin="normal"
-                                                                                    inputProps={{ pattern: Validator.passwordValidationPattern }}
+                                                                                   // inputProps={{ pattern: Validator.passwordValidationPattern }}
                                                                                 />
-                                                                        </Tooltip>
+                                                                        
                                                                         
                                                                 </div>
                                                                 <div className="login-controls-actions"> 

@@ -7,8 +7,9 @@ const initialState =  {
     userName:"",
     password:"",
     confirmPassword:"",
+    userThumb:"",
     errorMsg:"",
-    showError:false
+    showError:false,
 }
  
 export default (state = initialState,action) =>{
@@ -24,17 +25,12 @@ export default (state = initialState,action) =>{
 
         case Actions.SIGN_UP:
             //TODO: add api call to post the user
-            let session = sessionStorage.getItem(`user-${state.userName}`); 
-            console.log(session);
             try{
-                if (!session){
-                    sessionStorage.setItem(`user-${state.userName}`,JSON.stringify({...state,userId:`user-${state.userName}`}));
-                    sessionStorage.setItem("userlogged",state.userName)
-                    return {...state,userId:`user-${state.userName}`};
-                }
-                else   
-                    throw new Error("User name aready exists");
-
+                    sessionStorage.setItem(`rkanban-user`,state.userName);
+                    sessionStorage.setItem(`rkanban-user-lastlogin`,new Date());
+                    sessionStorage.setItem(`rkanban-user-thumb`,state.userThumb);
+                    console.log(state.userThumb);
+                    return {...state,userId:`${state.userName}okdok`};
             }    
             catch(err){
                 return {...state,errorMsg:err.message,showError:true};

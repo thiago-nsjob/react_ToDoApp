@@ -22,8 +22,10 @@ class AuthContext extends React.Component{
     handleSignIn(user, pass){
       return new Promise(
             function(resolve,reject){
-                if(user == sessionStorage.getItem("userlogged")){
-                    sessionStorage.setItem("islogged",true)
+                console.log(`user informed ${user}`);
+                console.log(`session storage${sessionStorage.getItem("rkanban-user")}`)
+                if(user == sessionStorage.getItem("rkanban-user")){
+                    sessionStorage.setItem(`rkanban-user-lastlogin`,new Date());
                     console.log(`log in as ${sessionStorage.getItem("userlogged")}`);
                     resolve(200);
                 }
@@ -40,7 +42,7 @@ class AuthContext extends React.Component{
         return new Promise(
               function(resolve,reject){
                   try{
-                    sessionStorage.removeItem("islogged")
+                    sessionStorage.removeItem("rkanban-user-lastlogin")
                     console.log(`Logged out!`);
                     resolve(200);
 
@@ -57,12 +59,15 @@ class AuthContext extends React.Component{
 
     isLogged()
     {
-        return sessionStorage.getItem("islogged")
+        let lastLogin = new Date(sessionStorage.getItem('rkanban-user-lastlogin'));
+        
+        //if last login time was more than 30min ago
+        return Math.floor(((new Date()) - lastLogin)/1000/60) <= 30;
     }
 
     getUserInfo()
     {
-        return sessionStorage.getItem("userlogged")
+        return sessionStorage.getItem("rkanban-user");
     }
 
     render(){
