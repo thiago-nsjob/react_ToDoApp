@@ -117,7 +117,7 @@ class Project extends Component {
                                             open={this.state.showExitDialog}
                                             aria-labelledby="form-dialog-title"
                                     >
-                                    <DialogTitle id="form-dialog-title">{`Are you sure you want to exit project ${this.state.projectName} ?`}
+                                    <DialogTitle id="form-dialog-title">{`Are you sure you want to exit project ${this.props.projectName} ?`}
                                     </DialogTitle>
                                     <DialogActions>
                                                     <Button onClick={(e)=>this.props.history.push("/")} color="primary">
