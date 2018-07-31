@@ -35,8 +35,10 @@ This [demo](https://rkanban-app.herokuapp.com) is for some acquaintance only. Al
 
 
 ### Techs
-> The overriding design goal for Markdown's
->
+> React.js
+> MaterialUI
+> Redux
+
 
 ### Installation
 Clone this repo
@@ -57,4 +59,9 @@ $ yarn start
 ```
 
 ### Screenshots
+
+[![Login](screenshgitots/login.png?raw=true "Login")]
+[![Signup](screenshgitots/signup.png?raw=true "Signup")]
+[![Project Dashboard](screenshgitots/project_dashboard.png?raw=true "Dashboard")]
+[![Project](screenshgitots/project.png?raw=true "Project")]
 
