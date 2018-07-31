@@ -60,9 +60,15 @@ $ yarn start
 ```
 
 ### Screenshots
+Login
+![Login](screenshots/login.png?raw=true "Login")
 
-[![Login](screenshgitots/login.png?raw=true "Login")]
-[![Signup](screenshgitots/signup.png?raw=true "Signup")]
-[![Project Dashboard](screenshgitots/project_dashboard.png?raw=true "Dashboard")]
-[![Project](screenshgitots/project.png?raw=true "Project")]
+Signup
+![Signup](screenshots/signup.png?raw=true "Signup")
+
+Dashboard
+![Project Dashboard](screenshots/project_dashboard.png?raw=true "Dashboard")
+
+Project
+![Project](screenshots/project.png?raw=true "Project")
 
