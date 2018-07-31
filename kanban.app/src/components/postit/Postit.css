@@ -1,27 +1,27 @@
 /*postit body*/
 
-div.app-bayContainer-bay-postitcard     {
+div.app-laneContainer-lane-postitcard     {
     margin:0.5em;; 
 }
-div.app-bayContainer-bay-postitcontent     {
+div.app-laneContainer-lane-postitcontent     {
     max-width:16pc!important;
     padding: 0px !important;
     margin: 0.5em;
     display: flex;
 }
-.app-bayContainer-bay-postittitle {
+.app-laneContainer-lane-postittitle {
     padding-top: 1em;
     margin-right:1em !important; 
     font-weight: bold;
 }
 
-.app-bayContainer-bay-postitexpand{
+.app-laneContainer-lane-postitexpand{
     max-width: 1em;
     max-height: 1em;
     padding-left: 1em;
 }
 
-.app-bayContainer-bay-avatar{
+.app-laneContainer-lane-avatar{
     flex:1 1 auto;
     padding-left: -3em;
     margin-right: 0.5em;
@@ -33,7 +33,7 @@ div.app-bayContainer-bay-postitcontent     {
 }
 
 /*postit buttons*/
-.app-bayContainer-bay-postitedit,.app-bayContainer-bay-postitdelete{
+.app-laneContainer-lane-postitedit,.app-laneContainer-lane-postitdelete{
     
     min-width: 1em!important;
     min-height: 1em!important;
@@ -41,13 +41,13 @@ div.app-bayContainer-bay-postitcontent     {
     max-height:1.5em!important;
     border-radius: 4px !important;
 }
-.app-bayContainer-bay-postitedit,.app-bayContainer-bay-postitdelete svg{
+.app-laneContainer-lane-postitedit,.app-laneContainer-lane-postitdelete svg{
     width: 100%!important;
 }
 
 
 /*postit buttons*/
-.app-bayContainer-bay-textfield::-webkit-scrollbar{
+.app-laneContainer-lane-textfield::-webkit-scrollbar{
     display: none;
 }
 
@@ -60,11 +60,11 @@ div.app-bayContainer-bay-postitcontent     {
 
 /* postit edit fields */
 
-.app-bayContainer-bay-txt-postit-title{
+.app-laneContainer-lane-txt-postit-title{
     margin: 2em !important;
 }
 
-.app-bayContainer-bay-txt-postit-content{
+.app-laneContainer-lane-txt-postit-content{
     margin: 2em !important;
 }
 

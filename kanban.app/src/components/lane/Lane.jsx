@@ -7,31 +7,25 @@ import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
 import DialogTitle from '@material-ui/core/DialogTitle';
 import DialogActions from '@material-ui/core/DialogActions';
-import DialogContent from '@material-ui/core/DialogContent';
-import DialogContentText from '@material-ui/core/DialogContentText';
 import Divider from '@material-ui/core/Divider';
 
 import ContentAdd from '@material-ui/icons/Add';
 import ActionDelete from '@material-ui/icons/Delete';
 import ImageEdit from '@material-ui/icons/Edit';
 
-import Title from './Title';
 import Postit from '../postit/Postit';
-import {red} from '@material-ui/core/colors';
-
-
-import './Bay.css';
+import './Lane.css';
 
 
 
-class Bay extends Component{
+class Lane extends Component{
     constructor(props){
         super(props);
 
         //TODO:Remove after api implementation
 
         this.state={
-            baytitle: props.bayTitle,
+            lanetitle: props.laneTitle,
             isTitleHidden:false,
             isEditTitleHidden:true,
             showDeleteDialog:false,
@@ -72,7 +66,7 @@ class Bay extends Component{
     }
     handleTitleChange(e){
             this.setState( {
-                baytitle: e.target.value,  
+                lanetitle: e.target.value,  
             })
     }
     handleTitleFinishChange(e){
@@ -85,8 +79,8 @@ class Bay extends Component{
     }
     //EditTitleEvents
 
-    //Delete bay events
-    handleDeleteBay(e){
+    //Delete lane events
+    handleDeleteLane(e){
         this.setState((prevState,props) =>({
             showDeleteDialog: !prevState.showDeleteDialog
         }))
@@ -102,10 +96,10 @@ class Bay extends Component{
             showDeleteDialog: !prevState.showDeleteDialog
         }));
 
-        this.props.deletebay(this.props.bayId);
+        this.props.deletelane(this.props.laneId);
 
     }
-//Delete bay events
+//Delete lane events
 
 //DragEvents
     handleDragOver(e){
@@ -121,8 +115,8 @@ class Bay extends Component{
        
         let postit = JSON.parse(e.dataTransfer.getData('text/plain'));
        
-        //if the source bay id isn't the current, add the post it
-        if(postit.sourcebay !== this.props.bayId){
+        //if the source lane id isn't the current, add the post it
+        if(postit.sourcelane !== this.props.laneId){
 
             let newlst = this.state.lstPostit.slice(0); 
             newlst.push(postit);
@@ -131,7 +125,7 @@ class Bay extends Component{
             }))
 
             //TODO: impliment delete
-            this.props.deleteBayRemains(postit);
+            this.props.deleteLaneRemains(postit);
         }
         
     }
@@ -177,7 +171,7 @@ class Bay extends Component{
                     content={postit.content} 
                     hasBlockingIssue={postit.hasBlockingIssue} 
                     position={index} 
-                    sourcebay={this.props.bayId} 
+                    sourcelane={this.props.laneId} 
                     deletePostit={this.handleDeletePostit}
                     showEditPostit={postit.showEditPostit} 
                     style = {postit.style}
@@ -190,7 +184,7 @@ class Bay extends Component{
     render(){
 
         return(
-            <Paper  id={this.props.bayId} 
+            <Paper  id={this.props.laneId} 
                     className={this.props.className} 
                     onDragOver={(e)=>this.handleDragOver(e)}
                     onDragEnter={(e)=>this.handleDragEnter(e)}
@@ -198,16 +192,16 @@ class Bay extends Component{
                  //   onDragEnd={(e)=>this.handleDragEnd(e)}
             >
                 <Typography  className={this.props.className + "-title " + "hidden" + !this.state.isEditTitleHidden  } onClick={(e)=>this.handleEditTitleClick(e)}> 
-                    {this.state.baytitle}
+                    {this.state.lanetitle}
                    
                 </Typography>
                 <Divider className={this.props.className + "-divider"} />
                 <TextField
-                    label="Set Bay Name"
-                    className={this.props.className + "-fieldbayname " + " hidden" + this.state.isEditTitleHidden}
+                    label="Set Lane Name"
+                    className={this.props.className + "-fieldlanename " + " hidden" + this.state.isEditTitleHidden}
                     onChange={(e)=>this.handleTitleChange(e)}
                     onKeyPress={(e)=>this.handleTitleFinishChange(e)}
-                    value={this.state.baytitle}
+                    value={this.state.lanetitle}
                 /> 
                 <Button variant="fab"
                     mini={true}
@@ -224,19 +218,19 @@ class Bay extends Component{
                 </Button>
                 <Button variant="fab"
                     mini={true}
-                    onClick={(e)=>this.handleDeleteBay(e)}
+                    onClick={(e)=>this.handleDeleteLane(e)}
                     className={this.props.className + "-deletepostit " }  
                 >
                 <ActionDelete/>
                 </Button>
                 
                 <Dialog
-                        title={"Bay deletion!"}
+                        title={"Lane deletion!"}
                         modal="true"
                         open={this.state.showDeleteDialog}
                         aria-labelledby="form-dialog-title"
                 >
-                <DialogTitle id="form-dialog-title">{"Are you sure you want to delete bay " + this.state.baytitle + " ?"}
+                <DialogTitle id="form-dialog-title">{"Are you sure you want to delete lane " + this.state.lanetitle + " ?"}
                 </DialogTitle>
 
                 <DialogActions>
@@ -259,4 +253,4 @@ class Bay extends Component{
              );
     }
 }
-export default Bay;
+export default Lane;

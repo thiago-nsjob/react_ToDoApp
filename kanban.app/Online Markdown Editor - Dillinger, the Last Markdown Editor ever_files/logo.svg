@@ -1,0 +1,23 @@
+<svg width="397" height="180" xmlns="http://www.w3.org/2000/svg">
+ <!-- Created with Method Draw - http://github.com/duopixel/Method-Draw/ -->
+ <g>
+  <title>background</title>
+  <rect fill="none" id="canvas_background" height="182" width="399" y="-1" x="-1"/>
+  <g display="none" overflow="visible" y="0" x="0" height="100%" width="100%" id="canvasGrid">
+   <rect fill="url(#gridpattern)" stroke-width="0" y="0" x="0" height="100%" width="100%"/>
+  </g>
+ </g>
+ <g>
+  <title>Layer 1</title>
+  <ellipse ry="76" rx="79" id="svg_1" cy="92.5" cx="163" stroke-width="0" stroke="#000" fill="#fe4880"/>
+  <path d="m198.990952,91.918861c0,-25.3936 23.087311,-45.962421 51.590179,-45.962421c28.502853,0 51.590195,20.568821 51.590195,45.962421c0,25.3936 -23.087341,45.962425 -51.590195,45.962425c-28.502869,0 -51.590179,-20.568825 -51.590179,-45.962425z"/>
+  <ellipse transform="rotate(0.806814, 250.581, 91.9189)" ry="45.96242" rx="51.590183" id="svg_2" cy="91.918861" cx="250.581132" stroke-width="0" stroke="#000" fill="#563672"/>
+  <path d="m294.1539,96.918861c0,-18.266777 16.525452,-33.062874 36.927216,-33.062874c20.401794,0 36.927246,14.796097 36.927246,33.062874c0,18.266785 -16.525452,33.062874 -36.927246,33.062874c-20.401764,0 -36.927216,-14.796089 -36.927216,-33.062874z"/>
+  <ellipse transform="rotate(-1.10881, 331.081, 96.9189)" ry="33.062875" rx="36.927232" id="svg_4" cy="96.918864" cx="331.08113" stroke-width="0" stroke="#000" fill="#8e3c77"/>
+  <path d="m35.758793,117.999992c0,-13.590546 11.519543,-24.598892 25.741203,-24.598892c14.221661,0 25.741207,11.008347 25.741207,24.598892c0,13.590553 -11.519547,24.598885 -25.741207,24.598885c-14.221661,0 -25.741203,-11.008331 -25.741203,-24.598885z"/>
+  <ellipse transform="rotate(-3.19836, 61.5, 118)" ry="24.598889" rx="25.741206" id="svg_5" cy="117.999992" cx="61.499998" stroke-width="0" stroke="#000" fill="#5f00f9"/>
+  <text font-style="italic" font-weight="bold" transform="rotate(1.34395, 61.5046, 112.755) matrix(2.61113, 0, 0, 3.06615, -147.251, -555.541)" xml:space="preserve" text-anchor="start" font-family="Junction, sans-serif" font-size="24" id="svg_6" y="226.211631" x="72.328365" stroke-opacity="null" stroke-width="0" stroke="#000" fill="#ffffff">r</text>
+  <text font-style="italic" font-weight="normal" transform="rotate(0.657574, 175.068, 92.4169) matrix(12.4575, 0, 0, 8.04207, -1724.01, -1377.18)" xml:space="preserve" text-anchor="start" font-family="Arvo, sans-serif" font-size="24" id="svg_7" y="190.916927" x="142.630823" stroke-opacity="null" stroke-width="0" stroke="#000" fill="#ffffff">K</text>
+  <text font-weight="bold" font-style="normal" transform="rotate(1.43681, 286.089, 92.7169) matrix(3.60568, 0, 0, 2.16365, -617.547, -283.439)" xml:space="preserve" text-anchor="start" font-family="Helvetica, Arial, sans-serif" font-size="24" id="svg_8" y="181.074212" x="229.090165" stroke-opacity="null" stroke-width="0" stroke="#000" fill="#ffffff">ban</text>
+ </g>
+</svg>

@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 
-import Paper from '@material-ui/core/Paper';
 import Typography from '@material-ui/core/Typography';
 import Dialog from '@material-ui/core/Dialog';
 import TextField from '@material-ui/core/TextField';
@@ -16,21 +15,20 @@ import Collapse from '@material-ui/core/Collapse';
 
 import DialogTitle from '@material-ui/core/DialogTitle';
 import DialogActions from '@material-ui/core/DialogActions';
-import DialogContent from '@material-ui/core/DialogContent';
-import DialogContentText from '@material-ui/core/DialogContentText';
+
 
 import ImageEdit from '@material-ui/icons/Edit';
 import ActionDelete from '@material-ui/icons/Delete';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 
-import {darkBlack} from '@material-ui/core/colors';
+
 import "./Postit.css";
 import ColorPicker from '../colorPicker/ColorPicker';
 import defaultThumb from  "../../static/smiling.svg"; 
 
 
 
-//Change all post it state to bay throw ref.
+//Change all post it state to lane throw ref.
 
 class Postit extends Component{
     constructor(props){
@@ -61,7 +59,7 @@ class Postit extends Component{
             expanded:false,
             showEditPostit: false,
             showDeletePostitDialog:false,
-            sourcebay:this.props.sourcebay
+            sourcelane:this.props.sourcelane
         });
     }
 

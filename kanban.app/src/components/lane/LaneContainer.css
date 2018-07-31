@@ -1,5 +1,5 @@
 
-.app-bayContainer-bayList{
+.app-laneContainer-laneList{
     display:flex;
     flex-direction: row;
     justify-content: flex-start;
@@ -18,30 +18,30 @@
   }
 
   
-  .app-bayContainer-textField{
+  .app-laneContainer-textField{
     max-width:80%;
     margin:3em !important;
   }
 
 
-  .app-bayContainer-bayControls{
+  .app-laneContainer-laneControls{
     display:flex;  
     max-height: 5em;
     flex-flow: row;
   }
 
-  .app-bayContainer-bayControls-colorpicker{
+  .app-laneContainer-laneControls-colorpicker{
     margin:2em;
     flex:10; 
     justify-content:flex-start;
   }
 
-  div.app-bayContainer-bayControls-newBay{
+  div.app-laneContainer-laneControls-newLane{
     flex:1; 
     justify-content:flex-end;
   }
 
-  button.app-bayContainer-bayControls-newBay,.app-bayContainer-bayControls-colorpicker-open{
+  button.app-laneContainer-laneControls-newLane,.app-laneContainer-laneControls-colorpicker-open{
     background-color :#c6427b !important ; 
     margin:2em;
     color: white !important;

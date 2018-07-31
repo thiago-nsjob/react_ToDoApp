@@ -14,7 +14,7 @@ import DialogActions from '@material-ui/core/DialogActions';
 
 import './Project.css';
 
-import BayContainer from '../bay/BayContainer';
+import LaneContainer from '../lane/LaneContainer';
  
 class Project extends Component {
  constructor(props){
@@ -61,16 +61,16 @@ class Project extends Component {
         );
     }
 
-    handleAddBay(e){
-        this.childBayConteiner.handleAddBay(e);
+    handleAddLane(e){
+        this.childLaneConteiner.handleAddLane(e);
     };
     
-    //Add bay events
+    //Add lane events
 
     render() {
 
-        //MOC:some default bays to start with
-        const lstBay =  [{bayId:"bay1",bayTitle:"To Do",bayRef:undefined},{bayId:"bay2",bayTitle:"Doing",bayRef:undefined},{bayId:"bay3",bayTitle:"Done",bayRef:undefined}]
+        //MOC:some default lanes to start with
+        const lstLane =  [{laneId:"lane1",laneTitle:"To Do",laneRef:undefined},{laneId:"lane2",laneTitle:"Doing",laneRef:undefined},{laneId:"lane3",laneTitle:"Done",laneRef:undefined}]
        
         
         return ( 
@@ -88,9 +88,9 @@ class Project extends Component {
                             {this.props.projectName}
                         </Typography>
                         <Button 
-                            className={"project-menu-newbay"}
-                            onClick={(e)=>this.handleAddBay(e)}>
-                            New Bay
+                            className={"project-menu-newlane"}
+                            onClick={(e)=>this.handleAddLane(e)}>
+                            New Lane
                         </Button>
                         <Button className="project-menu-save"
                             onClick={(e)=>this.handleSaveProject(e)}>
@@ -105,9 +105,9 @@ class Project extends Component {
                         />
                 </div>
                 <div className="project-content">
-                    <BayContainer
-                        className ="app-bayContainer" bayList={lstBay}
-                        onRef={(ref) => (this.childBayConteiner = ref)} 
+                    <LaneContainer
+                        className ="app-laneContainer" laneList={lstLane}
+                        onRef={(ref) => (this.childLaneConteiner = ref)} 
                     />
                 </div>
 
