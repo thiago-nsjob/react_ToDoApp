@@ -1,5 +1,5 @@
 
-.app-bayContainer-bay{
+.app-laneContainer-lane{
     height: 100%;
     margin: 0.5em;
     max-width: 35%;
@@ -7,16 +7,16 @@
     background-color: #563672 !important;
 }
 
-.app-bayContainer-bay-postits{
+.app-laneContainer-lane-postits{
     display:flex;
     flex-direction: row;
     justify-content: flex-start;
     flex-wrap: wrap;
 }
-.app-bayContainer-bay-divider{
+.app-laneContainer-lane-divider{
     background-color: white !important;
 }
-.app-bayContainer-bay-fieldbayname{
+.app-laneContainer-lane-fieldlanename{
     color: white !important;
 }
 
@@ -27,28 +27,28 @@
     color: white !important;
 }
 /* Command Buttons */
-.app-bayContainer-bay-addpostit{    
+.app-laneContainer-lane-addpostit{    
     margin: 0.5em!important;
 }
  
-.app-bayContainer-bay-deletepostit{
+.app-laneContainer-lane-deletepostit{
     margin: 0.5em!important;
 }
 
-.app-bayContainer-bay-editpostit{
+.app-laneContainer-lane-editpostit{
     margin: 0.5em!important;
     
 }
 /* Command Buttons */
 
-.app-bayContainer-bay-title{
+.app-laneContainer-lane-title{
     text-align: left;
     font-size: 20pt !important;
     margin: 0.25em !important;
     color: white !important;
 }
 
-.app-bayContainer-bay-hiddentrue{
+.app-laneContainer-lane-hiddentrue{
     display: none !important;
 }
  
