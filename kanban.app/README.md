@@ -1,6 +1,7 @@
 # rKanban
 
-[![rkanban](https://rkanban-app.herokuapp.com/static/logo.svg)](https://rkanban-app.herokuapp.com)
+
+  [![rkanban](https://rkanban-app.herokuapp.com/static/logo.svg)](https://rkanban-app.herokuapp.com)
 
 rKanban is a simple kanban app coded with [React](https://reactjs.org/) and [Material UI](https://material-ui.com/). 
 
